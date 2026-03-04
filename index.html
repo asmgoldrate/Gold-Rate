@@ -3,221 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>شركة الصائغ المعروف ش.م.م - أسعار الذهب 24</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<title>Gold Price System</title>
 
 <style>
-body {
-  margin: 0;
-  padding: 8px;
-  font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
-  text-align: center;
-  color: #FFEB3B;
-  background: linear-gradient(135deg, #0a0a0a, #111111);
-  min-height: 100vh;
-  overflow-x: hidden;
+body{
+  margin:0;
+  font-family:Tahoma;
+  background:#0f0f0f;
+  color:#FFD54F;
+  text-align:center;
 }
 
-.logo-container { margin: 8px 0 4px; }
-.logo-img {
-  width: 85px; height: 85px;
-  object-fit: cover;
-  border-radius: 50%;
-  box-shadow: 0 6px 20px rgba(212,175,55,0.35);
-  border: 3px solid #D4AF37;
+header{
+  padding:15px;
+  font-size:20px;
+  font-weight:bold;
+  background:#1a1a1a;
+  border-bottom:2px solid #D4AF37;
 }
 
-.insta-container {
-  margin: 0 0 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  direction: ltr;
+.nav-buttons{
+  margin:15px;
 }
 
-.insta-icon {
-  font-size: 1.6em;
-  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.nav-buttons button{
+  padding:10px 18px;
+  margin:5px;
+  border:none;
+  border-radius:6px;
+  background:#D4AF37;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-.insta-text { color: #F56040; font-weight: bold; }
-
-h2 { font-size: 1em; color: #FFD54F; margin: 6px 0; }
-
-#ounceUSD { font-size: 0.9em; color: #FFCA28; margin: 4px 0 8px; font-weight: bold; }
-
-.carousel {
-  max-width: 360px;
-  margin: 0 auto 8px;
-  overflow: hidden;
-  border: 1px solid #D4AF37;
-  border-radius: 10px;
-  background: rgba(20,20,20,0.8);
+.section{
+  display:none;
 }
 
-.carousel-inner {
-  display: flex;
-  transition: transform 0.4s ease-in-out;
-  width: 100%;
+.active{
+  display:block;
 }
 
-.carousel-slide {
-  min-width: 100%;
-  flex-shrink: 0;
-  padding: 8px;
+table{
+  width:90%;
+  margin:20px auto;
+  border-collapse:collapse;
+  background:#1c1c1c;
 }
 
-.table-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px;
-  font-weight: bold;
-  border-bottom: 2px solid #D4AF37;
-  font-size: 0.9em;
-  color: #FFEB3B;
-  background: rgba(40,40,40,0.7);
+th, td{
+  padding:12px;
+  border-bottom:1px solid #333;
 }
 
-.rate-row {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px;
-  border-bottom: 1px solid #444;
-  font-size: 0.9em;
+th{
+  background:#2a2a2a;
 }
-
-.rate-row:last-child { border-bottom: none; }
-
-.karat { flex: 1; text-align: right; }
-.unit { flex: 2; text-align: center; }
-.price { flex: 1.2; text-align: left; font-weight: bold; }
-
-.refresh-btn {
-  background: linear-gradient(90deg, #25D366, #128C7E);
-  color: white;
-  font-weight: bold;
-  padding: 10px;
-  border: none;
-  border-radius: 40px;
-  width: 80%;
-  max-width: 240px;
-  cursor: pointer;
-  font-size: 1em;
-  margin: 10px auto;
-  display: block;
-}
-
-.note { color: #FFCA28; font-size: 0.8em; }
-.updated-time { font-size: 0.82em; color: #FFF176; }
-.footer { color: #FFD54F; font-size: 0.75em; }
 </style>
 </head>
+
 <body>
 
-<div class="logo-container">
-  <img src="https://i.ibb.co/CF2bDdM/1772224958978.png" class="logo-img">
+<header>شركة الصائغ المعروف</header>
+
+<div class="nav-buttons">
+  <button onclick="showSection('bars')">أسعار السبائك</button>
+  <button onclick="showSection('karats')">أسعار العيارات</button>
 </div>
 
-<div class="insta-container">
-  <i class="fab fa-instagram insta-icon"></i>
-  <span class="insta-text">@alsaighalmarouf</span>
+<!-- Gold Bars Section -->
+<div id="bars" class="section active">
+  <h2>أسعار سبائك الذهب 24K</h2>
+  <table>
+    <tr><th>الوحدة</th><th>السعر (OMR)</th></tr>
+    <tr><td>1 غرام</td><td>--</td></tr>
+    <tr><td>2.5 غرام</td><td>--</td></tr>
+    <tr><td>5 غرام</td><td>--</td></tr>
+    <tr><td>10 غرام</td><td>--</td></tr>
+    <tr><td>1 تولة</td><td>--</td></tr>
+    <tr><td>20 غرام</td><td>--</td></tr>
+    <tr><td>50 غرام</td><td>--</td></tr>
+    <tr><td>100 غرام</td><td>--</td></tr>
+    <tr><td>116.64 غرام</td><td>--</td></tr>
+  </table>
 </div>
 
-<h2>أسعار سبائك الذهب عيار 24</h2>
-<div id="ounceUSD">جارٍ تحميل السعر...</div>
-
-<div class="carousel">
-  <div class="carousel-inner" id="carouselInner">
-
-    <!-- Slide 1 -->
-    <div class="carousel-slide">
-      <div class="table-header"><span>الوحدة</span><span>السعر (OMR)</span></div>
-      <div class="rate-row"><span class="karat">1 غرام</span><span class="price" id="g1">Loading...</span></div>
-      <div class="rate-row"><span class="karat">5 غرام</span><span class="price" id="g5">Loading...</span></div>
-      <div class="rate-row"><span class="karat">10 غرام</span><span class="price" id="g10">Loading...</span></div>
-      <div class="rate-row"><span class="karat">20 غرام</span><span class="price" id="g20">Loading...</span></div>
-      <div class="rate-row"><span class="karat">50 غرام</span><span class="price" id="g50">Loading...</span></div>
-      <div class="rate-row"><span class="karat">100 غرام</span><span class="price" id="g100">Loading...</span></div>
-    </div>
-
-    <!-- Slide 2 -->
-    <div class="carousel-slide">
-      <h2>أسعار الذهب حسب العيار</h2>
-      <div class="table-header"><span>عيار</span><span>الوحدة</span><span>السعر (OMR)</span></div>
-      <div class="rate-row"><span class="karat">24K</span><span class="unit">1 جرام</span><span class="price">64.371</span></div>
-      <div class="rate-row"><span class="karat">22K</span><span class="unit">1 جرام</span><span class="price">59.286</span></div>
-      <div class="rate-row"><span class="karat">21K</span><span class="unit">1 جرام</span><span class="price">56.646</span></div>
-      <div class="rate-row"><span class="karat">18K</span><span class="unit">1 جرام</span><span class="price">48.600</span></div>
-    </div>
-
-  </div>
+<!-- Karats Section -->
+<div id="karats" class="section">
+  <h2>أسعار الذهب حسب العيار</h2>
+  <table>
+    <tr><th>العيار</th><th>الوحدة</th><th>السعر (OMR)</th></tr>
+    <tr><td>24K</td><td>1 جرام</td><td>--</td></tr>
+    <tr><td>22K</td><td>1 جرام</td><td>--</td></tr>
+    <tr><td>21K</td><td>1 جرام</td><td>--</td></tr>
+    <tr><td>18K</td><td>1 جرام</td><td>--</td></tr>
+    <tr><td>21K</td><td>1 تولة</td><td>--</td></tr>
+  </table>
 </div>
-
-<p class="updated-time" id="time">آخر تحديث: --</p>
-<p class="note">ملاحظه : اسعار الذهب متغيره</p>
-<p class="footer">رقم التواصل: 92480599<br>أخوكم تمجيد الصائغ</p>
-
-<button class="refresh-btn" id="refreshBtn">Refresh Prices</button>
 
 <script>
-let currentSlide = 0;
-let touchStartX = 0;
-const carouselInner = document.getElementById('carouselInner');
-
-function updateSlide() {
-  carouselInner.style.transform = `translateX(-${currentSlide * 100}%)`;
+function showSection(id){
+  document.getElementById('bars').classList.remove('active');
+  document.getElementById('karats').classList.remove('active');
+  document.getElementById(id).classList.add('active');
 }
-
-carouselInner.addEventListener('touchstart', e => {
-  touchStartX = e.changedTouches[0].screenX;
-});
-
-carouselInner.addEventListener('touchend', e => {
-  const diff = touchStartX - e.changedTouches[0].screenX;
-  if (Math.abs(diff) > 50) {
-    if (diff > 0 && currentSlide < 1) currentSlide++;
-    if (diff < 0 && currentSlide > 0) currentSlide--;
-    updateSlide();
-  }
-});
-
-const r = document.getElementById("refreshBtn");
-
-async function updatePrices(){
-  r.disabled = true;
-  r.innerText = "Refreshing...";
-  try{
-    const res = await fetch("https://api.gold-api.com/price/XAU");
-    const data = await res.json();
-    const p = data.price;
-    document.getElementById("ounceUSD").innerText = "سعر الأونصة (USD): " + Math.floor(p);
-
-    const gram = (p*1.4485+15)/116.64;
-    function f(x){return x.toFixed(3)+" OMR"}
-
-    document.getElementById("g1").innerText = f(gram+4.5);
-    document.getElementById("g5").innerText = f(gram*5+15);
-    document.getElementById("g10").innerText = f(gram*10+15);
-    document.getElementById("g20").innerText = f(gram*20+20);
-    document.getElementById("g50").innerText = f(gram*50+25);
-    document.getElementById("g100").innerText = f(gram*100+32);
-
-    const now = new Date();
-    document.getElementById("time").innerText =
-      "آخر تحديث: " + now.toLocaleString("ar-OM",{timeZone:"Asia/Muscat"});
-  }catch{
-    document.getElementById("ounceUSD").innerText="خطأ في تحميل السعر";
-  }
-  r.disabled=false;
-  r.innerText="Refresh Prices";
-}
-
-window.addEventListener("load",updatePrices);
-r.addEventListener("click",updatePrices);
-setInterval(updatePrices,300000);
 </script>
 
 </body>
