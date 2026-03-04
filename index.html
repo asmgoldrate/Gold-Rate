@@ -7,62 +7,164 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
 body {
-  margin:0; padding:8px;
-  font-family:'Segoe UI', Tahoma, Geneva, sans-serif;
-  text-align:center; color:#FFEB3B;
-  background: linear-gradient(135deg,#0a0a0a,#111111);
-  min-height:100vh; overflow-x:hidden;
+  margin: 0;
+  padding: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+  text-align: center;
+  color: #FFEB3B;
+  background: linear-gradient(135deg, #0a0a0a, #111111);
+  min-height: 100vh;
+  overflow-x: hidden;
 }
-.logo-container{margin:8px 0 4px;}
-.logo-img{width:85px;height:85px;object-fit:cover;border-radius:50%;box-shadow:0 6px 20px rgba(212,175,55,0.35);border:3px solid #D4AF37;background:rgba(0,0,0,0.4);}
-.insta-container{margin:0 0 8px;display:flex;justify-content:center;align-items:center;gap:8px;flex-direction:row;direction:ltr;}
-.insta-icon{font-size:1.6em;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
-.insta-text{color:#F56040;font-weight:bold;font-size:0.95em;}
-h2{font-size:1em;font-weight:bold;color:#FFD54F;margin:0 0 4px;}
-#ounceUSD{font-size:0.9em;color:#FFCA28;margin:4px 0 8px;font-weight:bold;}
 
-/* Carousel Styles */
-.carousel{width:100%;max-width:340px;margin:0 auto;overflow:hidden;border-radius:10px;position:relative;}
-.carousel-inner{display:flex;transition:transform 0.5s ease;width:200%;}
-.carousel-slide{width:50%;flex-shrink:0;padding:10px;box-sizing:border-box;}
+.logo-container {
+  margin: 8px 0 4px;
+}
+.logo-img {
+  width: 85px;
+  height: 85px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  box-shadow: 0 6px 20px rgba(212,175,55,0.35);
+  border: 3px solid #D4AF37;
+  background: rgba(0,0,0,0.4);
+}
 
-/* Rates Card (Table style) */
-.rates-card{background:rgba(20,20,20,0.8);border:1px solid #D4AF37;border-radius:10px;padding:6px;margin:0 auto 8px;box-shadow:0 6px 15px rgba(212,175,55,0.15);position:relative;overflow:hidden;}
-.rates-card::before{content:"";position:absolute;inset:0;background:url('https://i.ibb.co/CF2bDdM/1772224958978.png') no-repeat center center;background-size:auto 70%;opacity:0.2;z-index:0;pointer-events:none;}
-.rates-card > *{position:relative; z-index:1;}
-.table-header{display:flex;justify-content:space-between;padding:6px 8px;font-weight:bold;border-bottom:2px solid #D4AF37;font-size:0.85em;color:#FFEB3B;background:rgba(40,40,40,0.6);border-radius:6px 6px 0 0;}
-.rate-row{display:flex;justify-content:space-between;padding:5px 8px;border-bottom:1px solid #444;font-size:0.85em;transition:background 0.2s;background:rgba(30,30,30,0.4);}
-.rate-row:hover{background:rgba(255,215,0,0.08);}
-.rate-row:last-child{border-bottom:none;}
-.karat{color:#FFEB3B;font-weight:bold;}
-.price{color:#FFF176;font-weight:bold;}
-.refresh-btn{background:linear-gradient(90deg,#25D366,#128C7E);color:white;font-weight:bold;padding:10px;border:none;border-radius:40px;width:80%;max-width:240px;cursor:pointer;font-size:1em;margin:10px auto;display:block;box-shadow:0 4px 10px rgba(37,213,102,0.4);transition:all 0.3s;position:relative;z-index:1;}
-.refresh-btn:hover{transform:translateY(-2px);box-shadow:0 6px 15px rgba(37,213,102,0.6);}
-.note,.updated-time,.footer{position:relative;z-index:1;margin:4px 0;}
-.note{color:#FFCA28;font-weight:bold;font-size:0.78em;}
-.updated-time{font-size:0.82em;color:#FFF176;}
-.footer{color:#FFD54F;font-weight:bold;font-size:0.72em;margin-top:10px;line-height:1.3;}
+.insta-container {
+  margin: 0 0 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  flex-direction: row;
+  direction: ltr;
+}
+.insta-icon {
+  font-size: 1.6em;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.insta-text {
+  color: #F56040;
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+h2 { font-size: 1em; font-weight: bold; color: #FFD54F; margin: 0 0 4px; }
+#ounceUSD { font-size: 0.9em; color: #FFCA28; margin: 4px 0 8px; font-weight: bold; }
+
+.carousel {
+  position: relative;
+  max-width: 360px;
+  margin: 0 auto 8px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 200%;
+}
+
+.carousel-slide {
+  width: 50%;
+  flex-shrink: 0;
+  padding: 0 4px;
+}
+
+.rates-card {
+  background: rgba(20,20,20,0.8);
+  border: 1px solid #D4AF37;
+  border-radius: 10px;
+  padding: 6px;
+  box-shadow: 0 6px 15px rgba(212,175,55,0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.rates-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('https://i.ibb.co/CF2bDdM/1772224958978.png') no-repeat center center;
+  background-size: auto 70%;
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.rates-card > * { position: relative; z-index: 1; }
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 8px;
+  font-weight: bold;
+  border-bottom: 2px solid #D4AF37;
+  font-size: 0.85em;
+  color: #FFEB3B;
+  background: rgba(40,40,40,0.6);
+  border-radius: 6px 6px 0 0;
+}
+
+.rate-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 8px;
+  border-bottom: 1px solid #444;
+  font-size: 0.85em;
+  background: rgba(30,30,30,0.4);
+  transition: background 0.2s;
+}
+.rate-row:hover { background: rgba(255,215,0,0.08); }
+.rate-row:last-child { border-bottom: none; }
+
+.karat { color: #FFEB3B; font-weight: bold; }
+.price { color: #FFF176; font-weight: bold; }
+
+.refresh-btn {
+  background: linear-gradient(90deg, #25D366, #128C7E);
+  color: white; font-weight: bold; padding: 10px;
+  border: none; border-radius: 40px; width: 80%; max-width: 240px;
+  cursor: pointer; font-size: 1em; margin: 10px auto; display: block;
+  box-shadow: 0 4px 10px rgba(37,213,102,0.4);
+}
+
+.note, .updated-time, .footer {
+  margin: 4px 0;
+}
+
+.note { color: #FFCA28; font-weight: bold; font-size: 0.78em; }
+.updated-time { font-size: 0.82em; color: #FFF176; }
+.footer { color: #FFD54F; font-weight: bold; font-size: 0.72em; margin-top:10px; line-height:1.3; }
+
+/* Carousel arrows */
+.arrow { position:absolute; top:50%; transform:translateY(-50%); font-size:2em; color:#FFD700; background:rgba(0,0,0,0.3); border-radius:50%; width:36px; height:36px; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:2; user-select:none; }
+.arrow-left { left:-10px; }
+.arrow-right { right:-10px; }
 </style>
 </head>
 <body>
 
 <div class="logo-container">
-<img src="https://i.ibb.co/CF2bDdM/1772224958978.png" alt="شركة الصائغ المعروف ش.م.م" class="logo-img">
+  <img src="https://i.ibb.co/CF2bDdM/1772224958978.png" alt="شركة الصائغ المعروف" class="logo-img">
 </div>
 
 <div class="insta-container">
-<i class="fab fa-instagram insta-icon"></i>
-<span class="insta-text">@alsaighalmarouf</span>
+  <i class="fab fa-instagram insta-icon"></i>
+  <span class="insta-text">@alsaighalmarouf</span>
 </div>
 
-<h2>أسعار الذهب</h2>
+<h2>أسعار سبائك الذهب</h2>
 <div id="ounceUSD">جارٍ تحميل السعر...</div>
 
-<!-- Carousel with two tables -->
 <div class="carousel">
   <div class="carousel-inner" id="carouselInner">
 
-    <!-- Slide 1: Arabic Table -->
+    <!-- Slide 1: Original Table -->
     <div class="carousel-slide">
       <div class="rates-card">
         <div class="table-header"><span>الوحدة / Unit</span><span>السعر / Rate (OMR)</span></div>
@@ -78,19 +180,23 @@ h2{font-size:1em;font-weight:bold;color:#FFD54F;margin:0 0 4px;}
       </div>
     </div>
 
-    <!-- Slide 2: Sattardina Table -->
+    <!-- Slide 2: Second Table -->
     <div class="carousel-slide">
       <div class="rates-card">
-        <div class="table-header"><span>عيار / Karat</span><span>سعر ر.ع / Price OMR</span></div>
-        <div class="rate-row"><span class="karat">24K</span><span class="price" id="g24">Loading...</span></div>
-        <div class="rate-row"><span class="karat">22K</span><span class="price" id="g22">Loading...</span></div>
-        <div class="rate-row"><span class="karat">21K</span><span class="price" id="g21gm">Loading...</span></div>
-        <div class="rate-row"><span class="karat">18K</span><span class="price" id="g18">Loading...</span></div>
-        <div class="rate-row"><span class="karat">21K</span><span class="price" id="tola21">Loading...</span></div>
+        <div class="table-header"><span>عيار</span><span>الوحدة</span><span>السعر (OMR)</span></div>
+        <div class="rate-row"><span class="karat">24K</span><span>1 جرام</span><span class="price" id="g24_2">Loading...</span></div>
+        <div class="rate-row"><span class="karat">22K</span><span>1 جرام</span><span class="price" id="g22_2">Loading...</span></div>
+        <div class="rate-row"><span class="karat">21K</span><span>1 جرام</span><span class="price" id="g21_2">Loading...</span></div>
+        <div class="rate-row"><span class="karat">18K</span><span>1 جرام</span><span class="price" id="g18_2">Loading...</span></div>
+        <div class="rate-row"><span class="karat">21K</span><span>1 تولة (11.664 جم)</span><span class="price" id="tola21_2">Loading...</span></div>
       </div>
     </div>
 
   </div>
+
+  <!-- Carousel Arrows -->
+  <div class="arrow arrow-left" id="arrowLeft">&#10094;</div>
+  <div class="arrow arrow-right" id="arrowRight">&#10095;</div>
 </div>
 
 <p class="updated-time" id="time">آخر تحديث: --</p>
@@ -104,50 +210,86 @@ h2{font-size:1em;font-weight:bold;color:#FFD54F;margin:0 0 4px;}
 <button class="refresh-btn" id="refreshBtn">Refresh Prices</button>
 
 <script>
-// Carousel swipe
-const carouselInner=document.getElementById('carouselInner');let touchStartX=0;
-carouselInner.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX;});
-carouselInner.addEventListener('touchend',e=>{const diff=touchStartX-e.changedTouches[0].screenX;
-if(Math.abs(diff)>50){if(diff>0){carouselInner.style.transform='translateX(-50%)';}else{carouselInner.style.transform='translateX(0%)';}}});
+const carouselInner = document.getElementById("carouselInner");
+let currentSlide = 0;
 
-// Load Prices
+// Arrow click
+document.getElementById("arrowLeft").addEventListener("click",()=>{
+  if(currentSlide>0) currentSlide--; 
+  carouselInner.style.transform="translateX(-"+(currentSlide*50)+"%)";
+});
+document.getElementById("arrowRight").addEventListener("click",()=>{
+  if(currentSlide<1) currentSlide++; 
+  carouselInner.style.transform="translateX(-"+(currentSlide*50)+"%)";
+});
+
+// Swipe
+let touchStartX=0;
+carouselInner.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX;});
+carouselInner.addEventListener('touchend',e=>{
+  const diff=touchStartX-e.changedTouches[0].screenX;
+  if(Math.abs(diff)>50){
+    if(diff>0 && currentSlide<1) currentSlide++;
+    else if(diff<0 && currentSlide>0) currentSlide--;
+    carouselInner.style.transform="translateX(-"+(currentSlide*50)+"%)";
+  }
+});
+
+// Refresh button + data fill
 const r=document.getElementById("refreshBtn"),l={loading:!1};
-async function loadPrices(){
-if(l.loading)return;l.loading=!0;r.disabled=!0;r.innerText="Refreshing...";
+async function u(){
+if(l.loading) return;
+l.loading=!0;
+r.disabled=!0;
+r.innerText="Refreshing...";
 try{
-const t=await fetch("https://api.gold-api.com/price/XAU");const o=await t.json();const p=o.price;
+const t=await fetch("https://api.gold-api.com/price/XAU");
+const o=await t.json(),p=o.price;
 document.getElementById("ounceUSD").innerText="سعر الأونصة (USD): "+Math.floor(p);
 
-// Table 1 Arabic (original)
-function fmt1(x){return x.toFixed(1)+"00"}
-document.getElementById("g1").innerText=fmt1((p*1.4485+15)/116.64+4.5);
-document.getElementById("g2_5").innerText=fmt1((p*1.4485+15)/116.64*2.5+12);
-document.getElementById("g5").innerText=fmt1((p*1.4485+15)/116.64*5+15);
-document.getElementById("g10").innerText=fmt1((p*1.4485+15)/116.64*10+15);
-document.getElementById("tola").innerText=fmt1((p*1.4485+15)/116.64*11.664+15);
-document.getElementById("g20").innerText=fmt1((p*1.4485+15)/116.64*20+20);
-document.getElementById("g50").innerText=fmt1((p*1.4485+15)/116.64*50+25);
-document.getElementById("g100").innerText=fmt1((p*1.4485+15)/116.64*100+32);
-document.getElementById("g116_64").innerText=fmt1((p*1.4485+15)/116.64*116.64);
+// Table 1 calculations
+const g=(p*1.4485+15)/116.64,
+      d=g+4.5,
+      f=g*2.5+12,
+      h=g*5+15,
+      i=g*10+15,
+      j=g*11.664+15,
+      k=g*20+20,
+      m=g*50+25,
+      n=g*100+32,
+      q=g*116.64;
+function fmt(x){return x.toFixed(1)+"00"}
+document.getElementById("g1").innerText=fmt(d)+" OMR";
+document.getElementById("g2_5").innerText=fmt(f)+" OMR";
+document.getElementById("g5").innerText=fmt(h)+" OMR";
+document.getElementById("g10").innerText=fmt(i)+" OMR";
+document.getElementById("tola").innerText=fmt(j)+" OMR";
+document.getElementById("g20").innerText=fmt(k)+" OMR";
+document.getElementById("g50").innerText=fmt(m)+" OMR";
+document.getElementById("g100").innerText=fmt(n)+" OMR";
+document.getElementById("g116_64").innerText=fmt(q)+" OMR";
 
-// Table 2 Sattardina
-document.getElementById("g24").innerText=((p*1.4485+15)/116.64).toFixed(3)+" OMR";
-document.getElementById("g22").innerText=(((p*1.4485+15)/116.64)*0.921).toFixed(3)+" OMR";
-document.getElementById("g21gm").innerText=(((p*1.4485+15)/116.64)*0.880).toFixed(3)+" OMR";
-document.getElementById("g18").innerText=(((p*1.4485+15)/116.64)*0.755).toFixed(3)+" OMR";
-document.getElementById("tola21").innerText=(((p*1.4485+15)/116.64)*11.664*0.880).toFixed(2)+" OMR";
+// Table 2 calculations (copy from your earlier table)
+document.getElementById("g24_2").innerText=(d*1).toFixed(3)+" OMR";
+document.getElementById("g22_2").innerText=(d*0.92).toFixed(3)+" OMR";
+document.getElementById("g21_2").innerText=(d*0.88).toFixed(3)+" OMR";
+document.getElementById("g18_2").innerText=(d*0.755).toFixed(3)+" OMR";
+document.getElementById("tola21_2").innerText=(d*0.88*11.664).toFixed(2)+" OMR";
 
 const s=new Date();
 const tm=s.toLocaleString("en-US",{timeZone:"Asia/Muscat",dateStyle:"medium",timeStyle:"short"});
 document.getElementById("time").innerText="آخر تحديث: "+tm;
-
-}catch(e){document.getElementById("ounceUSD").innerText="خطأ في تحميل السعر";}
-l.loading=!1;r.disabled=!1;r.innerText="Refresh Prices";
+}catch(e){
+document.getElementById("ounceUSD").innerText="خطأ في تحميل السعر";
 }
-
-window.addEventListener("load",loadPrices);
-r.addEventListener("click",loadPrices);
-setInterval(loadPrices,300000);
+l.loading=!1;
+r.disabled=!1;
+r.innerText="Refresh Prices";
+}
+window.addEventListener("load",u);
+r.addEventListener("click",u);
+setInterval(u,300000);
 </script>
+
 </body>
 </html>
