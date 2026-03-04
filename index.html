@@ -1,144 +1,253 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Live Gold Rates - SATTARDINA JEWELLERY</title>
-  <style>
-    /* Your existing styles remain unchanged – no need to repeat them here */
-    body { margin: 0; padding: 10px; background: #000833; color: #fff; font-family: Arial, sans-serif; text-align: center; min-height: 100vh; }
-    .logo-container { margin: 12px 0; }
-    .logo-img { width: clamp(110px, 35vw, 126px); height: clamp(110px, 35vw, 126px); border-radius: 50%; border: 3px solid #ffd700; box-shadow: 0 5px 12px rgba(255,215,0,0.3); object-fit: contain; background: #000833; }
-    h1 { color: #00d4ff; font-size: clamp(1.7em, 5.5vw, 2.1em); margin: 8px 0 4px; }
-    .arabic { font-size: clamp(1.7em, 4.8vw, 2.2em); color: #ffd700; margin: 4px 0; font-weight: bold; }
-    .social { margin: 16px 0 12px; font-size: clamp(1em, 3.8vw, 1.2em); }
-    .social img { width: 32px; height: 32px; vertical-align: middle; margin-right: 7px; }
-    .updated-time { font-size: clamp(0.9em, 3vw, 1em); color: #ccc; margin: 0 0 16px; font-weight: normal; }
-    .whatsapp-container { background: #25D366; color: #000; font-size: clamp(1.2em, 4.5vw, 1.5em); font-weight: bold; padding: 10px; margin: 12px auto; border-radius: 10px; max-width: 360px; display: flex; align-items: center; justify-content: center; gap: 10px; box-shadow: 0 3px 8px rgba(0,0,0,0.5); }
-    .whatsapp-container img { width: 40px; height: 40px; }
-    #ounceUSD { font-size: clamp(1.3em, 4.8vw, 1.5em); color: #00ff7f; margin: 18px 0 12px; font-weight: bold; }
-    table { width: 90%; max-width: 400px; margin: 0 auto 24px; border-collapse: collapse; background: #001a3a; border: 2px solid #00d4ff; border-radius: 8px; overflow: hidden; font-size: clamp(0.9em, 3.3vw, 1.05em); }
-    th, td { padding: 9px; border: 1px solid #004080; text-align: center; }
-    th { background: #000d24; color: #00d4ff; }
-    .karat { color: #ffd700; font-weight: bold; }
-    .refresh-btn { background: #00d4ff; color: #000; font-size: clamp(1.1em, 4.5vw, 1.4em); font-weight: bold; padding: 10px; margin: 25px auto 15px; border: none; border-radius: 10px; width: 90%; max-width: 360px; cursor: pointer; box-shadow: 0 3px 8px rgba(0,212,255,0.5); }
-    .refresh-btn:hover { background: #00aaff; }
-    .refresh-btn:disabled { background: #555; cursor: not-allowed; }
-    #error { font-size: clamp(0.85em, 2.8vw, 0.95em); margin: 8px 0; color: #ffcc00; font-weight: bold; }
-    @media (max-width: 600px) { body { padding: 6px; } .logo-img { width: clamp(100px, 32vw, 115px); height: clamp(100px, 32vw, 115px); } table { width: 100%; font-size: 0.9em; } th, td { padding: 7px; } }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شركة الصائغ المعروف ش.م.م - أسعار الذهب 24</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+body {
+  margin: 0;
+  padding: 8px;
+  font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+  text-align: center;
+  color: #FFEB3B;
+  background: linear-gradient(135deg, #0a0a0a, #111111);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.logo-container { margin: 8px 0 4px; }
+.logo-img {
+  width: 85px; height: 85px;
+  object-fit: cover; object-position: center;
+  border-radius: 50%;
+  box-shadow: 0 6px 20px rgba(212,175,55,0.35);
+  border: 3px solid #D4AF37;
+}
+
+.insta-container {
+  margin: 0 0 8px;
+  display: flex; justify-content: center; align-items: center; gap: 8px;
+  flex-direction: row; direction: ltr;
+}
+.insta-icon { font-size: 1.6em; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.insta-text { color: #F56040; font-weight: bold; font-size: 0.95em; }
+
+h2 { font-size: 1em; font-weight: bold; color: #FFD54F; margin: 0 0 4px; }
+
+#ounceUSD { font-size: 0.9em; color: #FFCA28; margin: 4px 0 8px; font-weight: bold; }
+
+.carousel {
+  position: relative;
+  max-width: 360px;
+  margin: 0 auto 8px;
+  overflow: hidden;
+  border: 1px solid #D4AF37;
+  border-radius: 10px;
+  background: rgba(20,20,20,0.8);
+  box-shadow: 0 6px 15px rgba(212,175,55,0.15);
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.5s ease;
+  width: 200%;
+}
+
+.carousel-slide {
+  width: 50%;
+  flex-shrink: 0;
+  padding: 8px;
+}
+
+.rates-card {
+  position: relative;
+  overflow: hidden;
+  background: rgba(20,20,20,0.8);
+}
+
+.rates-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('https://i.ibb.co/CF2bDdM/1772224958978.png') no-repeat center center;
+  background-size: auto 70%;
+  opacity: 0.20;
+  z-index: 0;
+}
+
+.rates-card > * { position: relative; z-index: 1; }
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  font-weight: bold;
+  border-bottom: 2px solid #D4AF37;
+  font-size: 0.9em;
+  color: #FFEB3B;
+  background: rgba(40,40,40,0.7);
+  border-radius: 6px 6px 0 0;
+}
+
+.rate-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  border-bottom: 1px solid #444;
+  font-size: 0.9em;
+  background: rgba(30,30,30,0.5);
+}
+.rate-row:last-child { border-bottom: none; }
+
+.karat { flex: 1; text-align: right; color: #FFEB3B; font-weight: bold; }
+.unit { flex: 2; text-align: center; color: #FFF176; }
+.price { flex: 1.2; text-align: left; color: #FFF176; font-weight: bold; }
+
+.refresh-btn {
+  background: linear-gradient(90deg, #25D366, #128C7E);
+  color: white; font-weight: bold;
+  padding: 10px; border: none; border-radius: 40px;
+  width: 80%; max-width: 240px;
+  cursor: pointer; font-size: 1em; margin: 10px auto;
+  display: block;
+  box-shadow: 0 4px 10px rgba(37,213,102,0.4);
+}
+.refresh-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 15px rgba(37,213,102,0.6); }
+
+.note, .updated-time, .footer { margin: 6px 0; }
+.note { color: #FFCA28; font-weight: bold; font-size: 0.78em; }
+.updated-time { font-size: 0.82em; color: #FFF176; }
+.footer { color: #FFD54F; font-weight: bold; font-size: 0.72em; line-height: 1.3; }
+</style>
 </head>
 <body>
 
-  <div class="logo-container">
-    <img src="https://i.ibb.co/pBK5Zct0/file-00000000e73c7246bafe41f8ba02719e.png" alt="Sattardina Jewellery Logo" class="logo-img">
+<div class="logo-container">
+  <img src="https://i.ibb.co/CF2bDdM/1772224958978.png" alt="شركة الصائغ المعروف ش.م.م" class="logo-img">
+</div>
+
+<div class="insta-container">
+  <i class="fab fa-instagram insta-icon"></i>
+  <span class="insta-text">@alsaighalmarouf</span>
+</div>
+
+<h2>أسعار سبائك الذهب عيار 24</h2>
+<div id="ounceUSD">جارٍ تحميل السعر...</div>
+
+<div class="carousel">
+  <div class="carousel-inner" id="carouselInner">
+    <!-- Slide 1: Bullion table -->
+    <div class="carousel-slide">
+      <div class="rates-card">
+        <div class="table-header"><span>الوحدة</span><span>السعر (OMR)</span></div>
+        <div class="rate-row"><span class="karat">1 غرام</span><span class="price" id="g1">Loading...</span></div>
+        <div class="rate-row"><span class="karat">2.5 غرام</span><span class="price" id="g2_5">Loading...</span></div>
+        <div class="rate-row"><span class="karat">5 غرام</span><span class="price" id="g5">Loading...</span></div>
+        <div class="rate-row"><span class="karat">10 غرام</span><span class="price" id="g10">Loading...</span></div>
+        <div class="rate-row"><span class="karat">1 تولة</span><span class="price" id="tola">Loading...</span></div>
+        <div class="rate-row"><span class="karat">20 غرام</span><span class="price" id="g20">Loading...</span></div>
+        <div class="rate-row"><span class="karat">50 غرام</span><span class="price" id="g50">Loading...</span></div>
+        <div class="rate-row"><span class="karat">100 غرام</span><span class="price" id="g100">Loading...</span></div>
+        <div class="rate-row"><span class="karat">116.64 غرام</span><span class="price" id="g116_64">Loading...</span></div>
+      </div>
+    </div>
+
+    <!-- Slide 2: Karat table - ab clear dikhegi -->
+    <div class="carousel-slide">
+      <div class="rates-card">
+        <h2 style="font-size:1em; margin:6px 0 10px; color:#FFD54F;">أسعار الذهب حسب العيار</h2>
+        <div class="table-header"><span>عيار</span><span>الوحدة</span><span>السعر (OMR)</span></div>
+        <div class="rate-row"><span class="karat">24K</span><span class="unit">1 جرام</span><span class="price">64.371</span></div>
+        <div class="rate-row"><span class="karat">22K</span><span class="unit">1 جرام</span><span class="price">59.286</span></div>
+        <div class="rate-row"><span class="karat">21K</span><span class="unit">1 جرام</span><span class="price">56.646</span></div>
+        <div class="rate-row"><span class="karat">18K</span><span class="unit">1 جرام</span><span class="price">48.600</span></div>
+        <div class="rate-row"><span class="karat">21K</span><span class="unit">1 تولة (11.6644 جم)</span><span class="price">660.72</span></div>
+      </div>
+    </div>
   </div>
+</div>
 
-  <h1>SATTARDINA JEWELLERY</h1>
-  <div class="arabic">مجوهرات ستاردينا</div>
+<p class="updated-time" id="time">آخر تحديث: --</p>
+<p class="note">ملاحظه : اسعار الذهب متغيره</p>
 
-  <div id="ounceUSD">Gold per Ounce (USD): Loading...</div>
+<p class="footer">
+رقم التواصل: 92480599<br>
+أخوكم تمجيد الصائغ
+</p>
 
-  <table>
-    <tr>
-      <th>عيار / Karat</th>
-      <th>وحدة / Unit</th>
-      <th>سعر ر.ع / Price OMR</th>
-    </tr>
-    <tr><td class="karat">24K</td><td>1 gm / جرام</td><td id="g24">Loading...</td></tr>
-    <tr><td class="karat">22K</td><td>1 gm / جرام</td><td id="g22">Loading...</td></tr>
-    <tr><td class="karat">21K</td><td>1 gm / جرام</td><td id="g21gm">Loading...</td></tr>
-    <tr><td class="karat">18K</td><td>1 gm / جرام</td><td id="g18">Loading...</td></tr>
-    <tr><td class="karat">21K</td><td>1 Tola / تولة (11.664 gm)</td><td id="tola21">Loading...</td></tr>
-  </table>
+<button class="refresh-btn" id="refreshBtn">Refresh Prices</button>
 
-  <p class="updated-time" id="time">Last updated: Loading...</p>
+<script>
+// Swipe logic - reliable toggle
+let touchStartX = 0;
+const carouselInner = document.getElementById('carouselInner');
 
-  <p style="font-size: clamp(0.95em, 3.2vw, 1.05em); color: #ffcc66; margin: 8px 0 20px; font-weight: bold; text-align: center;">
-    ملاحظة: أسعار الذهب قابلة للتغيير باستمرار – آخر تحديث
-  </p>
+carouselInner.addEventListener('touchstart', e => {
+  touchStartX = e.changedTouches[0].screenX;
+});
 
-  <div class="social">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-    @sattardina_jewellery
-  </div>
+carouselInner.addEventListener('touchend', e => {
+  const touchEndX = e.changedTouches[0].screenX;
+  const diff = touchStartX - touchEndX;
 
-  <div class="whatsapp-container">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-    WHATSAPP: 71171790
-  </div>
-
-  <button class="refresh-btn" id="refreshBtn">Refresh Rates</button>
-
-  <p id="error"></p>
-
-  <script>
-    const refreshBtn = document.getElementById("refreshBtn");
-    let isLoading = false;
-
-    async function loadGoldPrice() {
-      const errorEl = document.getElementById("error");
-      errorEl.innerText = "";
-
-      if (isLoading) return;
-      isLoading = true;
-      refreshBtn.disabled = true;
-      refreshBtn.innerText = "Refreshing...";
-
-      try {
-        const response = await fetch('https://api.gold-api.com/price/XAU');
-        
-        if (!response.ok) {
-          throw new Error(`API error: ${response.status}`);
-        }
-
-        const data = await response.json();
-
-        if (!data.price || isNaN(data.price)) {
-          throw new Error("No valid price in response");
-        }
-
-        const ounceUSD = data.price;
-
-        document.getElementById("ounceUSD").innerText = `Gold per Ounce (USD): ${ounceUSD.toFixed(2)}`;
-
-        // Your existing calculations (unchanged)
-        const gold24gm = (ounceUSD * 1.4485 + 15) / 116.64;
-        const gold22gm = gold24gm * 0.921;
-        const gold21gm = gold24gm * 0.880;
-        const gold18gm = gold24gm * 0.755;
-        const tola21 = gold21gm * 11.664;
-
-        document.getElementById("g24").innerText   = gold24gm.toFixed(3) + " OMR";
-        document.getElementById("g22").innerText   = gold22gm.toFixed(3) + " OMR";
-        document.getElementById("g21gm").innerText = gold21gm.toFixed(3) + " OMR";
-        document.getElementById("g18").innerText   = gold18gm.toFixed(3) + " OMR";
-        document.getElementById("tola21").innerText = tola21.toFixed(2) + " OMR";
-
-        const now = new Date();
-        const muscatTime = now.toLocaleString('en-US', { 
-          timeZone: 'Asia/Muscat', 
-          dateStyle: 'medium', 
-          timeStyle: 'short' 
-        });
-        document.getElementById("time").innerText = `Last updated: ${muscatTime}`;
-
-      } catch (err) {
-        console.error("Error fetching gold price:", err);
-        errorEl.innerText = "Error loading rates. Please try again or check internet.";
-        document.getElementById("ounceUSD").innerText = "Error";
-      }
-
-      isLoading = false;
-      refreshBtn.disabled = false;
-      refreshBtn.innerText = "Refresh Rates";
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) {
+      // left swipe → dusri table
+      carouselInner.style.transform = 'translateX(-50%)';
+    } else {
+      // right swipe → pehli table
+      carouselInner.style.transform = 'translateX(0%)';
     }
+  }
+});
 
-    window.addEventListener('load', loadGoldPrice);
-    refreshBtn.addEventListener('click', loadGoldPrice);
+// Refresh for pehli table
+const r = document.getElementById("refreshBtn"), l = {loading: false};
+async function u(){
+  if(l.loading) return;
+  l.loading = true;
+  r.disabled = true;
+  r.innerText = "Refreshing...";
+  try{
+    const t = await fetch("https://api.gold-api.com/price/XAU");
+    const o = await t.json(), p = o.price;
+    document.getElementById("ounceUSD").innerText = "سعر الأونصة (USD): " + Math.floor(p);
+    const g = (p*1.4485+15)/116.64,
+          d = g+4.5,
+          f = g*2.5+12,
+          h = g*5+15,
+          i = g*10+15,
+          j = g*11.664+15,
+          k = g*20+20,
+          m = g*50+25,
+          n = g*100+32,
+          q = g*116.64;
+    function fmt(x){return x.toFixed(3)}
+    document.getElementById("g1").innerText = fmt(d)+" OMR";
+    document.getElementById("g2_5").innerText = fmt(f)+" OMR";
+    document.getElementById("g5").innerText = fmt(h)+" OMR";
+    document.getElementById("g10").innerText = fmt(i)+" OMR";
+    document.getElementById("tola").innerText = fmt(j)+" OMR";
+    document.getElementById("g20").innerText = fmt(k)+" OMR";
+    document.getElementById("g50").innerText = fmt(m)+" OMR";
+    document.getElementById("g100").innerText = fmt(n)+" OMR";
+    document.getElementById("g116_64").innerText = fmt(q)+" OMR";
+    const s = new Date();
+    const tm = s.toLocaleString("ar-OM",{timeZone:"Asia/Muscat",dateStyle:"medium",timeStyle:"short"});
+    document.getElementById("time").innerText = "آخر تحديث: "+tm;
+  }catch(e){
+    document.getElementById("ounceUSD").innerText = "خطأ في تحميل السعر";
+  }
+  l.loading = false;
+  r.disabled = false;
+  r.innerText = "Refresh Prices";
+}
+window.addEventListener("load",u);
+r.addEventListener("click",u);
+setInterval(u,300000);
+</script>
 
-    // Optional: Auto-refresh every 5 minutes (300000 ms)
-    // setInterval(loadGoldPrice, 300000);
-  </script>
 </body>
 </html>
