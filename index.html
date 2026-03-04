@@ -10,8 +10,8 @@ body {margin:0; padding:8px; font-family:Segoe UI, Tahoma, Geneva, sans-serif; t
 .logo-img {width:85px; height:85px; border-radius:50%; object-fit:cover; border:3px solid #D4AF37; background:rgba(0,0,0,0.4);}
 .carousel {position:relative; max-width:360px; margin:0 auto; overflow:hidden; border-radius:10px;}
 .carousel-inner {display:flex; transition:transform 0.5s ease; width:200%;}
-.carousel-slide {width:50%; flex-shrink:0; padding:0 4px;}
-.rates-card {background:rgba(20,20,20,0.8); border:1px solid #D4AF37; border-radius:10px; padding:6px; position:relative; overflow:hidden;}
+.carousel-slide {width:50%; flex-shrink:0; padding:0 4px; box-sizing: border-box;}
+.rates-card {background:rgba(20,20,20,0.8); border:1px solid #D4AF37; border-radius:10px; padding:6px; position:relative; overflow:hidden; min-height: 330px;}
 .rates-card::before {content:""; position:absolute; inset:0; background:url('https://i.ibb.co/CF2bDdM/1772224958978.png') no-repeat center center; background-size:auto 70%; opacity:0.2; z-index:0;}
 .rates-card>* {position:relative; z-index:1;}
 .table-header {display:flex; justify-content:space-between; padding:6px 8px; font-weight:bold; border-bottom:2px solid #D4AF37; font-size:0.85em; color:#FFEB3B; background:rgba(40,40,40,0.6);}
@@ -20,8 +20,8 @@ body {margin:0; padding:8px; font-family:Segoe UI, Tahoma, Geneva, sans-serif; t
 .karat {color:#FFEB3B; font-weight:bold;}
 .price {color:#FFF176; font-weight:bold;}
 .arrow {position:absolute; top:50%; transform:translateY(-50%); font-size:2em; color:#FFD700; background:rgba(0,0,0,0.3); border-radius:50%; width:36px; height:36px; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:2; user-select:none;}
-.arrow-left {left:-10px;}
-.arrow-right {right:-10px;}
+.arrow-left {left:5px;}
+.arrow-right {right:5px;}
 .refresh-btn {background:linear-gradient(90deg,#25D366,#128C7E); color:white; font-weight:bold; padding:10px; border:none; border-radius:40px; width:80%; max-width:240px; cursor:pointer; font-size:1em; margin:10px auto; display:block;}
 .updated-time, .note, .footer {margin:4px 0;}
 .note {color:#FFCA28; font-weight:bold; font-size:0.78em;}
@@ -41,7 +41,6 @@ body {margin:0; padding:8px; font-family:Segoe UI, Tahoma, Geneva, sans-serif; t
 <div class="carousel">
   <div class="carousel-inner" id="carouselInner">
 
-    <!-- Slide 1: Original table -->
     <div class="carousel-slide">
       <div class="rates-card">
         <div class="table-header"><span>الوحدة / Unit</span><span>السعر / Rate (OMR)</span></div>
@@ -57,7 +56,6 @@ body {margin:0; padding:8px; font-family:Segoe UI, Tahoma, Geneva, sans-serif; t
       </div>
     </div>
 
-    <!-- Slide 2: Table from your first script (karat-wise) -->
     <div class="carousel-slide">
       <div class="rates-card">
         <div class="table-header"><span>عيار / Karat</span><span>الوحدة / Unit</span><span>السعر / OMR</span></div>
@@ -65,7 +63,7 @@ body {margin:0; padding:8px; font-family:Segoe UI, Tahoma, Geneva, sans-serif; t
         <div class="rate-row"><span class="karat">22K</span><span>1 gm</span><span class="price" id="g22_2">Loading...</span></div>
         <div class="rate-row"><span class="karat">21K</span><span>1 gm</span><span class="price" id="g21_2">Loading...</span></div>
         <div class="rate-row"><span class="karat">18K</span><span>1 gm</span><span class="price" id="g18_2">Loading...</span></div>
-        <div class="rate-row"><span class="karat">21K</span><span>1 Tola (11.664 gm)</span><span class="price" id="tola21_2">Loading...</span></div>
+        <div class="rate-row"><span class="karat">21K</span><span>1 Tola</span><span class="price" id="tola21_2">Loading...</span></div>
       </div>
     </div>
 
@@ -81,64 +79,90 @@ body {margin:0; padding:8px; font-family:Segoe UI, Tahoma, Geneva, sans-serif; t
 <button class="refresh-btn" id="refreshBtn">Refresh Prices</button>
 
 <script>
-// Carousel arrows + swipe
-const carouselInner=document.getElementById("carouselInner");
-let currentSlide=0;
-document.getElementById("arrowLeft").addEventListener("click",()=>{if(currentSlide>0) currentSlide--; carouselInner.style.transform="translateX(-"+(currentSlide*50)+"%)";});
-document.getElementById("arrowRight").addEventListener("click",()=>{if(currentSlide<1) currentSlide++; carouselInner.style.transform="translateX(-"+(currentSlide*50)+"%)";});
-let touchStartX=0;
-carouselInner.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX;});
-carouselInner.addEventListener('touchend',e=>{const diff=touchStartX-e.changedTouches[0].screenX; if(Math.abs(diff)>50){if(diff>0 && currentSlide<1) currentSlide++; else if(diff<0 && currentSlide>0) currentSlide--; carouselInner.style.transform="translateX(-"+(currentSlide*50)+"%)";}});
+// Carousel Logic Fixed
+const carouselInner = document.getElementById("carouselInner");
+let currentSlide = 0;
 
-// Load prices
-const r=document.getElementById("refreshBtn"),l={loading:false};
-async function loadPrices(){
-  if(l.loading) return;
-  l.loading=true; r.disabled=true; r.innerText="Refreshing...";
-  try{
-    const t=await fetch("https://api.gold-api.com/price/XAU");
-    const o=await t.json(); const p=o.price;
-    document.getElementById("ounceUSD").innerText="سعر الأونصة (USD): "+Math.floor(p);
-
-    // Table 1
-    const g=(p*1.4485+15)/116.64,
-          d=g+4.5,
-          f=g*2.5+12,
-          h=g*5+15,
-          i=g*10+15,
-          j=g*11.664+15,
-          k=g*20+20,
-          m=g*50+25,
-          n=g*100+32,
-          q=g*116.64;
-    function fmt(x){return x.toFixed(1)+"00";}
-    document.getElementById("g1").innerText=fmt(d)+" OMR";
-    document.getElementById("g2_5").innerText=fmt(f)+" OMR";
-    document.getElementById("g5").innerText=fmt(h)+" OMR";
-    document.getElementById("g10").innerText=fmt(i)+" OMR";
-    document.getElementById("tola").innerText=fmt(j)+" OMR";
-    document.getElementById("g20").innerText=fmt(k)+" OMR";
-    document.getElementById("g50").innerText=fmt(m)+" OMR";
-    document.getElementById("g100").innerText=fmt(n)+" OMR";
-    document.getElementById("g116_64").innerText=fmt(q)+" OMR";
-
-    // Table 2 (karat-wise)
-    document.getElementById("g24_2").innerText=(d).toFixed(3)+" OMR";
-    document.getElementById("g22_2").innerText=(d*0.921).toFixed(3)+" OMR";
-    document.getElementById("g21_2").innerText=(d*0.880).toFixed(3)+" OMR";
-    document.getElementById("g18_2").innerText=(d*0.755).toFixed(3)+" OMR";
-    document.getElementById("tola21_2").innerText=(d*0.880*11.664).toFixed(2)+" OMR";
-
-    const s=new Date();
-    document.getElementById("time").innerText="آخر تحديث: "+s.toLocaleString("en-US",{timeZone:"Asia/Muscat",dateStyle:"medium",timeStyle:"short"});
-  }catch(e){
-    document.getElementById("ounceUSD").innerText="خطأ في تحميل السعر";
-  }
-  l.loading=false; r.disabled=false; r.innerText="Refresh Prices";
+function updateSlide() {
+    // slide width is 50% of the 200% container
+    carouselInner.style.transform = `translateX(${currentSlide * 50}%)`;
 }
-window.addEventListener("load",loadPrices);
-r.addEventListener("click",loadPrices);
-setInterval(loadPrices,300000);
+
+document.getElementById("arrowLeft").addEventListener("click", () => {
+    if (currentSlide < 1) currentSlide++;
+    updateSlide();
+});
+
+document.getElementById("arrowRight").addEventListener("click", () => {
+    if (currentSlide > 0) currentSlide--;
+    updateSlide();
+});
+
+// Touch swipe logic
+let touchStartX = 0;
+carouselInner.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
+carouselInner.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) {
+        if (diff > 0 && currentSlide < 1) currentSlide++;
+        else if (diff < 0 && currentSlide > 0) currentSlide--;
+        updateSlide();
+    }
+});
+
+// Load prices logic
+const r = document.getElementById("refreshBtn"), l = { loading: false };
+async function loadPrices() {
+    if (l.loading) return;
+    l.loading = true; r.disabled = true; r.innerText = "Refreshing...";
+    try {
+        const t = await fetch("https://api.gold-api.com/price/XAU");
+        const o = await t.json(); const p = o.price;
+        document.getElementById("ounceUSD").innerText = "سعر الأونصة (USD): " + Math.floor(p);
+
+        // Gold Calculations
+        const g = (p * 1.4485 + 15) / 116.64,
+              d = g + 4.5,
+              f = g * 2.5 + 12,
+              h = g * 5 + 15,
+              i = g * 10 + 15,
+              j = g * 11.664 + 15,
+              k = g * 20 + 20,
+              m = g * 50 + 25,
+              n = g * 100 + 32,
+              q = g * 116.64;
+
+        function fmt(x) { return x.toFixed(3); }
+
+        // Table 1 Update
+        document.getElementById("g1").innerText = fmt(d) + " OMR";
+        document.getElementById("g2_5").innerText = fmt(f) + " OMR";
+        document.getElementById("g5").innerText = fmt(h) + " OMR";
+        document.getElementById("g10").innerText = fmt(i) + " OMR";
+        document.getElementById("tola").innerText = fmt(j) + " OMR";
+        document.getElementById("g20").innerText = fmt(k) + " OMR";
+        document.getElementById("g50").innerText = fmt(m) + " OMR";
+        document.getElementById("g100").innerText = fmt(n) + " OMR";
+        document.getElementById("g116_64").innerText = fmt(q) + " OMR";
+
+        // Table 2 Update (Karat-wise)
+        document.getElementById("g24_2").innerText = fmt(d) + " OMR";
+        document.getElementById("g22_2").innerText = (d * 0.921).toFixed(3) + " OMR";
+        document.getElementById("g21_2").innerText = (d * 0.880).toFixed(3) + " OMR";
+        document.getElementById("g18_2").innerText = (d * 0.755).toFixed(3) + " OMR";
+        document.getElementById("tola21_2").innerText = (d * 0.880 * 11.664).toFixed(3) + " OMR";
+
+        const s = new Date();
+        document.getElementById("time").innerText = "آخر تحديث: " + s.toLocaleString("en-US", { timeZone: "Asia/Muscat", dateStyle: "medium", timeStyle: "short" });
+    } catch (e) {
+        document.getElementById("ounceUSD").innerText = "خطأ في تحميل السعر";
+    }
+    l.loading = false; r.disabled = false; r.innerText = "Refresh Prices";
+}
+
+window.addEventListener("load", loadPrices);
+r.addEventListener("click", loadPrices);
+setInterval(loadPrices, 300000);
 </script>
 
 </body>
