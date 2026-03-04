@@ -6,158 +6,185 @@
 <title>أسعار الذهب - شركه الصائغ المعروف</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-body {margin:0; padding:8px; font-family:Segoe UI, Tahoma, Geneva, sans-serif; text-align:center; color:#FFEB3B; background:#111; min-height:100vh;}
+body {margin:0; padding:8px; font-family:Segoe UI, Tahoma, Geneva, sans-serif; text-align:center; color:#FFEB3B; background:#111; display: flex; flex-direction: column; min-height: 100vh;}
+.content-wrapper {flex: 1;}
 .logo-container {margin:8px 0 2px;}
-.logo-img {width:85px; height:85px; border-radius:50%; object-fit:cover; border:3px solid #D4AF37; background:rgba(0,0,0,0.4);}
-.insta-box {margin-bottom: 10px; font-size: 0.9em; color: #E1306C; font-weight: bold;}
-.insta-box i {margin-left: 5px;}
+.logo-img {width:90px; height:90px; border-radius:50%; object-fit:cover; border:3px solid #D4AF37; background:rgba(0,0,0,0.4);}
 
+/* Instagram - Icon on Left, Big Font */
+.insta-box {margin-bottom: 12px; font-size: 1.3em; color: #E1306C; font-weight: bold; display: flex; justify-content: center; align-items: center; gap: 10px;}
+.insta-box i { font-size: 1.2em; }
+
+/* Main Fonts */
+h2 {font-size: 1.8em; margin: 10px 0; min-height: 1.2em;}
+#ounceUSD {font-size: 1.5em; font-weight: bold; color: #FFF176; margin-bottom: 15px;}
+
+/* Carousel Container */
 .carousel {position:relative; max-width:360px; margin:0 auto; overflow:hidden; border-radius:10px;}
-.carousel-inner {display:flex; transition:transform 0.5s ease; width:200%;}
-.carousel-slide {width:50%; flex-shrink:0; padding:0 4px; box-sizing: border-box;}
+.carousel-inner {display:flex; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); width: 100%;}
+.carousel-slide {width: 100%; flex-shrink: 0; padding: 0 4px; box-sizing: border-box;}
 
-.rates-card {background:rgba(20,20,20,0.8); border:1px solid #D4AF37; border-radius:10px; padding:6px; position:relative; overflow:hidden; min-height: 330px;}
+.rates-card {background:rgba(20,20,20,0.8); border:1px solid #D4AF37; border-radius:10px; padding:6px; position:relative; overflow:hidden; min-height: 340px;}
 .rates-card::before {content:""; position:absolute; inset:0; background:url('https://i.ibb.co/CF2bDdM/1772224958978.png') no-repeat center center; background-size:auto 70%; opacity:0.15; z-index:0;}
 .rates-card>* {position:relative; z-index:1;}
 
-.table-header {display:flex; justify-content:space-between; padding:6px 8px; font-weight:bold; border-bottom:2px solid #D4AF37; font-size:0.85em; color:#FFEB3B; background:rgba(40,40,40,0.6);}
-.rate-row {display:flex; justify-content:space-between; padding:5px 8px; border-bottom:1px solid #444; font-size:0.85em; background:rgba(30,30,30,0.4);}
+.table-header {display:flex; justify-content:space-between; padding:12px 8px; font-weight:bold; border-bottom:2px solid #D4AF37; font-size:1.1em; color:#FFEB3B; background:rgba(40,40,40,0.6);}
+.rate-row {display:flex; justify-content:space-between; padding:10px 8px; border-bottom:1px solid #444; font-size:1.1em; background:rgba(30,30,30,0.4);}
 .rate-row:last-child {border-bottom:none;}
 .karat {color:#FFEB3B; font-weight:bold;}
 .price {color:#FFF176; font-weight:bold;}
 
-/* Bottom Controls */
-.controls-container {display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: 15px;}
-.arrow {font-size:1.8em; color:#FFD700; background:rgba(212, 175, 55, 0.2); border: 1px solid #D4AF37; border-radius:50%; width:45px; height:45px; display:flex; align-items:center; justify-content:center; cursor:pointer; user-select:none;}
-.refresh-btn {background:linear-gradient(90deg,#25D366,#128C7E); color:white; font-weight:bold; padding:12px; border:none; border-radius:40px; width:160px; cursor:pointer; font-size:1em;}
+/* Footer Controls - Bottom Fixed */
+.footer-controls {margin-top: auto; padding-bottom: 25px;}
+.controls-container {display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 15px;}
+.arrow {font-size:2em; color:#FFD700; background:rgba(212, 175, 55, 0.2); border: 1px solid #D4AF37; border-radius:50%; width:55px; height:55px; display:flex; align-items:center; justify-content:center; cursor:pointer;}
+.refresh-btn {background:linear-gradient(90deg,#25D366,#128C7E); color:white; font-weight:900; padding:15px; border:none; border-radius:40px; width:190px; cursor:pointer; font-size:1.1em; letter-spacing: 1px;}
 
-.updated-time, .note, .footer {margin:4px 0;}
-.note {color:#FFCA28; font-weight:bold; font-size:0.78em;}
-.updated-time {font-size:0.82em; color:#FFF176;}
-.footer {color:#FFD54F; font-weight:bold; font-size:0.72em; margin-top:10px; line-height:1.3;}
+.updated-time {font-size:1em; color:#FFF176; margin: 10px 0;}
+.note {color:#FFCA28; font-weight:bold; font-size:0.9em;}
+.footer-info {color:#FFD54F; font-weight:bold; font-size:0.85em; margin-top:10px; line-height:1.4;}
 
-/* Slide 2 Styling */
-#karatTable { max-width: 88%; margin: 20px auto; min-height: auto; }
-#karatTable .table-header { padding: 12px 10px; font-size: 0.95em; }
-#karatTable .rate-row { padding: 15px 10px; font-size: 1.05em; }
+/* Slide 2 - Extra Bold */
+#karatTable { max-width: 92%; margin: 15px auto; min-height: auto; }
+#karatTable .table-header { padding: 18px 10px; font-size: 1.2em; }
+#karatTable .rate-row { padding: 22px 10px; font-size: 1.3em; }
 </style>
 </head>
 <body>
 
-<div class="logo-container">
-  <img src="https://i.ibb.co/CF2bDdM/1772224958978.png" class="logo-img">
-</div>
-<div class="insta-box">
-  <i class="fab fa-instagram"></i>@alsaighalmarouf
-</div>
-
-<h2 id="mainHeading">أسعار سبائك الذهب</h2>
-<div id="ounceUSD">جارٍ تحميل السعر...</div>
-
-<div class="carousel">
-  <div class="carousel-inner" id="carouselInner">
-    <div class="carousel-slide">
-      <div class="rates-card">
-        <div class="table-header"><span>الوحدة / Unit</span><span>السعر (OMR)</span></div>
-        <div class="rate-row"><span class="karat">1 غرام</span><span class="price" id="g1">...</span></div>
-        <div class="rate-row"><span class="karat">2.5 غرام</span><span class="price" id="g2_5">...</span></div>
-        <div class="rate-row"><span class="karat">5 غرام</span><span class="price" id="g5">...</span></div>
-        <div class="rate-row"><span class="karat">10 غرام</span><span class="price" id="g10">...</span></div>
-        <div class="rate-row"><span class="karat">1 تولة</span><span class="price" id="tola">...</span></div>
-        <div class="rate-row"><span class="karat">20 غرام</span><span class="price" id="g20">...</span></div>
-        <div class="rate-row"><span class="karat">50 غرام</span><span class="price" id="g50">...</span></div>
-        <div class="rate-row"><span class="karat">100 غرام</span><span class="price" id="g100">...</span></div>
-        <div class="rate-row"><span class="karat">116.64 غرام</span><span class="price" id="g116_64">...</span></div>
-      </div>
+<div class="content-wrapper">
+    <div class="logo-container">
+      <img src="https://i.ibb.co/CF2bDdM/1772224958978.png" class="logo-img">
+    </div>
+    <div class="insta-box">
+      <i class="fab fa-instagram"></i><span>@alsaighalmarouf</span>
     </div>
 
-    <div class="carousel-slide">
-      <div id="karatTable" class="rates-card">
-        <div class="table-header"><span>عيار / Karat</span><span>السعر / OMR</span></div>
-        <div class="rate-row"><span class="karat">24K</span><span class="price" id="g24_2">...</span></div>
-        <div class="rate-row"><span class="karat">22K</span><span class="price" id="g22_2">...</span></div>
-        <div class="rate-row"><span class="karat">21K</span><span class="price" id="g21_2">...</span></div>
-        <div class="rate-row"><span class="karat">18K</span><span class="price" id="g18_2">...</span></div>
-        <div class="rate-row"><span class="karat">21K (تولة)</span><span class="price" id="tola21_2">...</span></div>
+    <h2 id="mainHeading">أسعار سبائك الذهب</h2>
+    <div id="ounceUSD">Ounce Price (USD): ...</div>
+
+    <div class="carousel">
+      <div class="carousel-inner" id="carouselInner">
+        <div class="carousel-slide">
+          <div class="rates-card">
+            <div class="table-header"><span>الوحدة / Unit</span><span>السعر (OMR)</span></div>
+            <div class="rate-row"><span class="karat">1 غرام</span><span class="price" id="g1">...</span></div>
+            <div class="rate-row"><span class="karat">2.5 غرام</span><span class="price" id="g2_5">...</span></div>
+            <div class="rate-row"><span class="karat">5 غرام</span><span class="price" id="g5">...</span></div>
+            <div class="rate-row"><span class="karat">10 غرام</span><span class="price" id="g10">...</span></div>
+            <div class="rate-row"><span class="karat">1 تولة</span><span class="price" id="tola">...</span></div>
+            <div class="rate-row"><span class="karat">20 غرام</span><span class="price" id="g20">...</span></div>
+            <div class="rate-row"><span class="karat">50 غرام</span><span class="price" id="g50">...</span></div>
+            <div class="rate-row"><span class="karat">100 غرام</span><span class="price" id="g100">...</span></div>
+            <div class="rate-row"><span class="karat">116.64 غرام</span><span class="price" id="g116_64">...</span></div>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div id="karatTable" class="rates-card">
+            <div class="table-header"><span>عيار / Karat</span><span>السعر / OMR</span></div>
+            <div class="rate-row"><span class="karat">24K (1 gm)</span><span class="price" id="g24_2">...</span></div>
+            <div class="rate-row"><span class="karat">22K (1 gm)</span><span class="price" id="g22_2">...</span></div>
+            <div class="rate-row"><span class="karat">21K (1 gm)</span><span class="price" id="g21_2">...</span></div>
+            <div class="rate-row"><span class="karat">18K (1 gm)</span><span class="price" id="g18_2">...</span></div>
+            <div class="rate-row"><span class="karat">21K (Tola)</span><span class="price" id="tola21_2">...</span></div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 </div>
 
-<div class="controls-container">
-    <div class="arrow" id="arrowRight"><i class="fas fa-chevron-right"></i></div>
-    <button class="refresh-btn" id="refreshBtn">تحديث الأسعار</button>
-    <div class="arrow" id="arrowLeft"><i class="fas fa-chevron-left"></i></div>
+<div class="footer-controls">
+    <p class="updated-time" id="time">Last Update: --</p>
+    <p class="note">ملاحظه : اسعار الذهب متغيره</p>
+    <div class="controls-container">
+        <div class="arrow" id="btnNext"><i class="fas fa-chevron-right"></i></div>
+        <button class="refresh-btn" id="refreshBtn">REFRESH PRICES</button>
+        <div class="arrow" id="btnPrev"><i class="fas fa-chevron-left"></i></div>
+    </div>
+    <p class="footer-info">Contact: 92480599 | Al Saigh Al Marouf</p>
 </div>
-
-<p class="updated-time" id="time">آخر تحديث: --</p>
-<p class="note">ملاحظه : اسعار الذهب متغيره</p>
-<p class="footer">رقم التواصل: 92480599<br>أخوكم تمجيد الصائغ</p>
 
 <script>
 const carouselInner = document.getElementById("carouselInner");
 const mainHeading = document.getElementById("mainHeading");
+const slides = document.querySelectorAll(".carousel-slide");
 let currentSlide = 0;
+const totalSlides = slides.length;
 
-function updateSlide() {
-    carouselInner.style.transform = `translateX(${currentSlide * 50}%)`;
-    // Heading Change Logic
-    if(currentSlide === 0) {
+function updateCarousel() {
+    // Smooth looping logic
+    carouselInner.style.transform = `translateX(${currentSlide * 100}%)`;
+    
+    // Heading swap logic
+    if (currentSlide === 0) {
         mainHeading.innerText = "أسعار سبائك الذهب";
     } else {
         mainHeading.innerText = "أسعار الذهب مباشر";
     }
 }
 
-document.getElementById("arrowLeft").addEventListener("click", () => {
-    if (currentSlide < 1) currentSlide++;
-    updateSlide();
+document.getElementById("btnNext").addEventListener("click", () => {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; // Infinity loop back
+    updateCarousel();
 });
 
-document.getElementById("arrowRight").addEventListener("click", () => {
-    if (currentSlide > 0) currentSlide--;
-    updateSlide();
+document.getElementById("btnPrev").addEventListener("click", () => {
+    currentSlide = (currentSlide + 1) % totalSlides; // Infinity loop forward
+    updateCarousel();
 });
 
-// Prices Logic
+// Touch Swiping for Infinity Loop
+let touchStartX = 0;
+carouselInner.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].screenX; });
+carouselInner.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].screenX;
+    if (Math.abs(diff) > 50) {
+        if (diff > 0) currentSlide = (currentSlide + 1) % totalSlides;
+        else currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateCarousel();
+    }
+});
+
+// Price Loader
 const r = document.getElementById("refreshBtn"), l = { loading: false };
 async function loadPrices() {
     if (l.loading) return;
-    l.loading = true; r.innerText = "جاري التحديث...";
+    l.loading = true; r.innerText = "REFRESHING...";
     try {
         const t = await fetch("https://api.gold-api.com/price/XAU");
         const o = await t.json(); const p = o.price;
-        document.getElementById("ounceUSD").innerText = "سعر الأونصة (USD): " + Math.floor(p);
+        document.getElementById("ounceUSD").innerText = "Ounce Price (USD): " + Math.floor(p);
 
-        const g = (p * 1.4485 + 15) / 116.64,
-              d = g + 4.5, f = g * 2.5 + 12, h = g * 5 + 15, i = g * 10 + 15,
-              j = g * 11.664 + 15, k = g * 20 + 20, m = g * 50 + 25, n = g * 100 + 32,
-              q = g * 116.64;
+        const basePrice = (p * 1.4485 + 15) / 116.64;
+        const g1 = basePrice + 4.5;
 
         function fmt(x) { return x.toFixed(3); }
 
-        document.getElementById("g1").innerText = fmt(d) + " OMR";
-        document.getElementById("g2_5").innerText = fmt(f) + " OMR";
-        document.getElementById("g5").innerText = fmt(h) + " OMR";
-        document.getElementById("g10").innerText = fmt(i) + " OMR";
-        document.getElementById("tola").innerText = fmt(j) + " OMR";
-        document.getElementById("g20").innerText = fmt(k) + " OMR";
-        document.getElementById("g50").innerText = fmt(m) + " OMR";
-        document.getElementById("g100").innerText = fmt(n) + " OMR";
-        document.getElementById("g116_64").innerText = fmt(q) + " OMR";
+        // Table 1
+        document.getElementById("g1").innerText = fmt(g1) + " OMR";
+        document.getElementById("g2_5").innerText = fmt(basePrice * 2.5 + 12) + " OMR";
+        document.getElementById("g5").innerText = fmt(basePrice * 5 + 15) + " OMR";
+        document.getElementById("g10").innerText = fmt(basePrice * 10 + 15) + " OMR";
+        document.getElementById("tola").innerText = fmt(basePrice * 11.664 + 15) + " OMR";
+        document.getElementById("g20").innerText = fmt(basePrice * 20 + 20) + " OMR";
+        document.getElementById("g50").innerText = fmt(basePrice * 50 + 25) + " OMR";
+        document.getElementById("g100").innerText = fmt(basePrice * 100 + 32) + " OMR";
+        document.getElementById("g116_64").innerText = fmt(basePrice * 116.64) + " OMR";
 
-        document.getElementById("g24_2").innerText = fmt(d) + " OMR";
-        document.getElementById("g22_2").innerText = (d * 0.921).toFixed(3) + " OMR";
-        document.getElementById("g21_2").innerText = (d * 0.880).toFixed(3) + " OMR";
-        document.getElementById("g18_2").innerText = (d * 0.755).toFixed(3) + " OMR";
-        document.getElementById("tola21_2").innerText = (d * 0.880 * 11.664).toFixed(3) + " OMR";
+        // Table 2
+        document.getElementById("g24_2").innerText = fmt(g1) + " OMR";
+        document.getElementById("g22_2").innerText = (g1 * 0.921).toFixed(3) + " OMR";
+        document.getElementById("g21_2").innerText = (g1 * 0.880).toFixed(3) + " OMR";
+        document.getElementById("g18_2").innerText = (g1 * 0.755).toFixed(3) + " OMR";
+        document.getElementById("tola21_2").innerText = (g1 * 0.880 * 11.664).toFixed(3) + " OMR";
 
         const s = new Date();
-        document.getElementById("time").innerText = "آخر تحديث: " + s.toLocaleString("en-US", { timeZone: "Asia/Muscat", dateStyle: "medium", timeStyle: "short" });
+        document.getElementById("time").innerText = "Last Update: " + s.toLocaleString("en-US", { timeZone: "Asia/Muscat", timeStyle: "short" });
     } catch (e) {
-        document.getElementById("ounceUSD").innerText = "خطأ في الاتصال";
+        document.getElementById("ounceUSD").innerText = "Connection Error";
     }
-    l.loading = false; r.innerText = "تحديث الأسعار";
+    l.loading = false; r.innerText = "REFRESH PRICES";
 }
 window.addEventListener("load", loadPrices);
 r.addEventListener("click", loadPrices);
@@ -165,4 +192,3 @@ r.addEventListener("click", loadPrices);
 
 </body>
 </html>
-
