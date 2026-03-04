@@ -27,6 +27,20 @@ body {margin:0; padding:8px; font-family:Segoe UI, Tahoma, Geneva, sans-serif; t
 .note {color:#FFCA28; font-weight:bold; font-size:0.78em;}
 .updated-time {font-size:0.82em; color:#FFF176;}
 .footer {color:#FFD54F; font-weight:bold; font-size:0.72em; margin-top:10px; line-height:1.3;}
+
+/* Dusri table ke liye specific styling, chota karne aur rows mota karne ke liye */
+#karatTable {
+    max-width: 90%; /* Table ko chota karne ke liye */
+    margin: 10px auto; /* Center karne ke liye */
+}
+#karatTable .table-header {
+    padding: 10px 8px; /* Rows mota karne ke liye padding badhayi */
+    font-size: 0.8em; /* Font thoda chota */
+}
+#karatTable .rate-row {
+    padding: 9px 8px; /* Rows mota karne ke liye padding badhayi */
+    font-size: 0.8em; /* Font thoda chota */
+}
 </style>
 </head>
 <body>
@@ -57,7 +71,7 @@ body {margin:0; padding:8px; font-family:Segoe UI, Tahoma, Geneva, sans-serif; t
     </div>
 
     <div class="carousel-slide">
-      <div class="rates-card">
+      <div id="karatTable" class="rates-card">
         <div class="table-header"><span>عيار / Karat</span><span>الوحدة / Unit</span><span>السعر / OMR</span></div>
         <div class="rate-row"><span class="karat">24K</span><span>1 gm</span><span class="price" id="g24_2">Loading...</span></div>
         <div class="rate-row"><span class="karat">22K</span><span>1 gm</span><span class="price" id="g22_2">Loading...</span></div>
@@ -79,12 +93,12 @@ body {margin:0; padding:8px; font-family:Segoe UI, Tahoma, Geneva, sans-serif; t
 <button class="refresh-btn" id="refreshBtn">Refresh Prices</button>
 
 <script>
-// Carousel Logic Fixed
+// Carousel Logic (Fixed for rtl and width)
 const carouselInner = document.getElementById("carouselInner");
 let currentSlide = 0;
 
 function updateSlide() {
-    // slide width is 50% of the 200% container
+    // rtl direction mein translateX positive hota hai, slide width 50%
     carouselInner.style.transform = `translateX(${currentSlide * 50}%)`;
 }
 
@@ -132,7 +146,7 @@ async function loadPrices() {
               n = g * 100 + 32,
               q = g * 116.64;
 
-        function fmt(x) { return x.toFixed(3); }
+        function fmt(x) { return x.toFixed(3); } // 3 decimal places jaisa Oman mein chalta hai
 
         // Table 1 Update
         document.getElementById("g1").innerText = fmt(d) + " OMR";
@@ -162,8 +176,9 @@ async function loadPrices() {
 
 window.addEventListener("load", loadPrices);
 r.addEventListener("click", loadPrices);
-setInterval(loadPrices, 300000);
+setInterval(loadPrices, 300000); // 5 minutes refresh
 </script>
 
 </body>
 </html>
+
