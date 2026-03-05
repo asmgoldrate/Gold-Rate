@@ -6,45 +6,67 @@
 <title>أسعار الذهب - شركه الصائغ المعروف</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-/* Page Lock Hatane ke liye scrolling enable rakhi hai */
-body {margin:0; padding:5px; font-family:'Segoe UI', sans-serif; text-align:center; color:#FFEB3B; background:#000; min-height: 100vh; overflow-x: hidden;}
+/* Page scrolling enable rakhi hai taaki button dikhe */
+body {margin:0; padding:5px; font-family:'Segoe UI', sans-serif; text-align:center; color:#FFEB3B; background:#000; min-height: 100vh;}
 
 /* Logo Section */
 .logo-container {margin:10px 0 5px;}
 .logo-img {width:95px; height:95px; border-radius:50%; border:2px solid #D4AF37;}
 
-/* Instagram ID */
 .insta-box {margin: 2px auto 8px; font-size: 1.1em; color: #f09433; font-weight: bold; display: flex; justify-content: center; align-items: center; gap: 6px; direction: ltr;}
 .insta-box i { color: #dc2743; }
 
-/* Headings */
 h2 {font-size: 1.1em; margin: 5px 0; color: #D4AF37;}
 #ounceUSD {font-size: 1.05em; font-weight: bold; color: #FFF176; margin-bottom: 10px;}
 
-/* Swipeable Carousel */
+/* Carousel */
 .carousel {position:relative; width: 100%; max-width:360px; margin:0 auto; overflow:hidden;}
 .carousel-inner {display:flex; transition: transform 0.4s ease-out; width: 100%;}
 .carousel-slide {width: 100%; flex-shrink: 0; padding: 0 5px; box-sizing: border-box;}
 
-/* Table Card Design */
-.rates-card {background:rgba(20,20,20,0.95); border:1px solid #D4AF37; border-radius:10px; padding:2px; min-height: 250px;}
-.table-header {display:grid; grid-template-columns: 1fr 1fr 1fr; padding:8px 2px; font-weight:bold; border-bottom:1px solid #D4AF37; font-size:0.8em; color:#FFEB3B; background:rgba(40,40,40,0.8);}
+/* Table Card with Locked Background Logo */
+.rates-card {
+    background: rgba(15, 15, 15, 0.95);
+    border: 1px solid #D4AF37;
+    border-radius: 10px;
+    padding: 2px;
+    min-height: 250px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Watermark Logo - Locked */
+.rates-card::before {
+    content: "";
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 150px;
+    height: 150px;
+    background: url('https://i.ibb.co/CF2bDdM/1772224958978.png') no-repeat center;
+    background-size: contain;
+    opacity: 0.15; /* Halka rakha hai taaki text dikhe */
+    z-index: 0;
+    pointer-events: none;
+}
+
+.table-header {position: relative; z-index: 1; display:grid; grid-template-columns: 1fr 1fr 1fr; padding:8px 2px; font-weight:bold; border-bottom:1px solid #D4AF37; font-size:0.8em; color:#FFEB3B; background:rgba(40,40,40,0.9);}
+.rows-container {position: relative; z-index: 1;}
 .rate-row {display:grid; grid-template-columns: 1fr 1fr 1fr; padding:6px 2px; border-bottom:1px solid #222; font-size:0.85em; text-align: center; align-items: center; color: #FFF176;}
 .rate-row:last-child {border-bottom:none;}
 
-/* 2nd Table (Karat) Row Spacing Fix */
+/* 2nd Table Spacing */
 #karatRows .rate-row { padding: 12px 2px; font-size: 0.9em; }
 
-/* Info Section */
 .info-section {margin-top: 15px; padding: 0 5px;}
 .updated-time {font-size: 0.8em; color:#FFF176; margin: 2px 0;}
 .note {color:#ff4444; font-weight:bold; font-size: 0.75em; margin: 2px 0;}
 .footer-info {color:#FFD54F; font-weight:bold; font-size: 0.8em; margin: 5px 0; line-height: 1.2;}
 
-/* Refresh Button - Isse Fixed rakha hai taaki lock na ho */
-.footer-controls {margin-top: 20px; padding-bottom: 30px;}
+.footer-controls {margin-top: 20px; padding-bottom: 40px;}
 .controls-container {display: flex; align-items: center; justify-content: center; gap: 15px;}
-.arrow {font-size: 1.6em; color: #D4AF37; padding: 10px; cursor: pointer; -webkit-tap-highlight-color: transparent;}
+.arrow {font-size: 1.6em; color: #D4AF37; padding: 10px; cursor: pointer;}
 .refresh-btn {background: linear-gradient(90deg,#25D366,#128C7E); color:white; font-weight:bold; padding:12px 25px; border:none; border-radius:30px; min-width:160px; cursor:pointer; font-size:1em; box-shadow: 0 4px 15px rgba(0,0,0,0.5);}
 </style>
 </head>
@@ -61,13 +83,13 @@ h2 {font-size: 1.1em; margin: 5px 0; color: #D4AF37;}
     <div class="carousel-slide">
       <div class="rates-card">
         <div class="table-header"><span>عيار / Karat</span><span>الوحدة / Unit</span><span>السعر / OMR</span></div>
-        <div id="bullionRows"></div>
+        <div class="rows-container" id="bullionRows"></div>
       </div>
     </div>
     <div class="carousel-slide">
       <div class="rates-card">
         <div class="table-header"><span>عيار / Karat</span><span>الوحدة / Unit</span><span>السعر / OMR</span></div>
-        <div id="karatRows"></div>
+        <div class="rows-container" id="karatRows"></div>
       </div>
     </div>
   </div>
@@ -92,7 +114,6 @@ let currentSlide = 0;
 const inner = document.getElementById("carouselInner");
 const mainHeading = document.getElementById("mainHeading");
 
-// Touch Logic for Swipe
 let startX = 0;
 const swipeArea = document.getElementById("swipeArea");
 swipeArea.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive: true});
@@ -117,15 +138,10 @@ async function loadPrices() {
         document.getElementById("ounceUSD").innerText = "سعر الأونصة (USD): " + Math.floor(p);
         const p24k = (p * 1.4485 + 15) / 116.64;
         const fmt = x => x.toFixed(3);
-        
-        // Slide 2 Content
         const kRows = [["24K", "1 جرام", fmt(p24k)], ["22K", "1 جرام", fmt(p24k * 0.920)], ["21K", "1 جرام", fmt(p24k * 0.879)], ["18K", "1 جرام", fmt(p24k * 0.755)], ["21K", "1 تولة", fmt(p24k * 0.879 * 11.664)]];
         document.getElementById("karatRows").innerHTML = kRows.map(r => `<div class="rate-row"><span>${r[0]}</span><span>${r[1]}</span><span>${r[2]}</span></div>`).join('');
-        
-        // Slide 1 Content
         const bRows = [["24K", "1 جرام", fmt(p24k + 4.5)], ["24K", "2.5 جرام", fmt(p24k * 2.5 + 12)], ["24K", "5 جرام", fmt(p24k * 5 + 15)], ["24K", "10 جرام", fmt(p24k * 10 + 15)], ["24K", "1 تولة", fmt(p24k * 11.664 + 15)], ["24K", "20 جرام", fmt(p24k * 20 + 20)], ["24K", "50 جرام", fmt(p24k * 50 + 25)], ["24K", "100 جرام", fmt(p24k * 100 + 32)], ["24K", "116.64 جرام", fmt(p24k * 116.64)]];
         document.getElementById("bullionRows").innerHTML = bRows.map(r => `<div class="rate-row"><span>${r[0]}</span><span>${r[1]}</span><span>${r[2]}</span></div>`).join('');
-        
         const now = new Date();
         document.getElementById("time").innerText = "التحديث: " + now.toLocaleString('en-US', { month: 'short', day: '2-digit', year: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true });
     } catch (e) { console.error(e); }
