@@ -8,44 +8,40 @@
 <style>
 body {margin:0; padding:5px; font-family:'Segoe UI', sans-serif; text-align:center; color:#FFEB3B; background:#000; min-height: 100vh; overflow-x: hidden;}
 
-/* Shop Logo - Zoomed In Further */
-.logo-container {margin:15px 0 5px;}
-.logo-img {width:135px; height:135px; border-radius:50%; border:2px solid #D4AF37; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);}
+/* Top Shop Logo - Original Small Size with Zoomed Content */
+.logo-container {margin:8px 0 2px;}
+.logo-img {width:95px; height:95px; border-radius:50%; border:2px solid #D4AF37; object-fit: cover; transform: scale(1.1);}
 
-/* Instagram ID */
 .insta-box {margin: 2px auto 8px; font-size: 1.1em; color: #f09433; font-weight: bold; display: flex; justify-content: center; align-items: center; gap: 6px; direction: ltr;}
 .insta-box i { color: #dc2743; }
 
-h2 {font-size: 1.1em; margin: 5px 0; color: #D4AF37;}
-#ounceUSD {font-size: 1.05em; font-weight: bold; color: #FFF176; margin-bottom: 10px;}
+h2 {font-size: 1.1em; margin: 4px 0; color: #D4AF37;}
+#ounceUSD {font-size: 1.05em; font-weight: bold; color: #FFF176; margin-bottom: 8px;}
 
 /* Carousel */
 .carousel {position:relative; width: 100%; max-width:360px; margin:0 auto; overflow:hidden;}
 .carousel-inner {display:flex; transition: transform 0.4s ease-out; width: 100%;}
 .carousel-slide {width: 100%; flex-shrink: 0; padding: 0 5px; box-sizing: border-box;}
 
-/* Table Card with Locked Large Watermark Logo */
+/* Table Card Base */
 .rates-card {
     background: rgba(15, 15, 15, 0.95);
     border: 1px solid #D4AF37;
     border-radius: 10px;
     padding: 2px;
-    min-height: 250px;
     position: relative;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
 }
 
-/* Background Watermark - Bigger Size */
+/* Watermark Logo - Locked & Large */
 .rates-card::before {
     content: "";
     position: absolute;
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 280px; 
-    height: 280px;
+    width: 260px; 
+    height: 260px;
     background: url('https://i.ibb.co/CF2bDdM/1772224958978.png') no-repeat center;
     background-size: contain;
     opacity: 0.12;
@@ -53,23 +49,26 @@ h2 {font-size: 1.1em; margin: 5px 0; color: #D4AF37;}
     pointer-events: none;
 }
 
-.table-header {position: relative; z-index: 1; display:grid; grid-template-columns: 1fr 1fr 1fr; padding:10px 2px; font-weight:bold; border-bottom:1px solid #D4AF37; font-size:0.85em; color:#FFEB3B; background:rgba(40,40,40,0.95);}
-.rows-container {position: relative; z-index: 1; flex-grow: 1; display: flex; flex-direction: column;}
-.rate-row {display:grid; grid-template-columns: 1fr 1fr 1fr; flex-grow: 1; border-bottom:1px solid #222; font-size:0.88em; text-align: center; align-items: center; color: #FFF176;}
+.table-header {position: relative; z-index: 1; display:grid; grid-template-columns: 1fr 1fr 1fr; padding:8px 2px; font-weight:bold; border-bottom:1px solid #D4AF37; font-size:0.8em; color:#FFEB3B; background:rgba(40,40,40,0.9);}
+.rows-container {position: relative; z-index: 1;}
+
+/* Row Styling - 1st Table (Bullion) stays compact */
+.rate-row {display:grid; grid-template-columns: 1fr 1fr 1fr; padding:5px 2px; border-bottom:1px solid #222; font-size:0.82em; text-align: center; align-items: center; color: #FFF176;}
 .rate-row:last-child {border-bottom:none;}
 
-/* Adjustments for 2nd Table to eliminate gap */
-#karatRows .rate-row { padding: 12px 2px; font-size: 0.95em; }
+/* 2nd Table (Karat) Adjustments for gap */
+#karatRows .rate-row { padding: 14px 2px; font-size: 0.9em; }
+#karatRows { min-height: 240px; display: flex; flex-direction: column; justify-content: space-around; }
 
-.info-section {margin-top: 10px; padding: 0 5px;}
-.updated-time {font-size: 0.85em; color:#FFF176; margin: 2px 0;}
-.note {color:#ff4444; font-weight:bold; font-size: 0.8em; margin: 2px 0;}
-.footer-info {color:#FFD54F; font-weight:bold; font-size: 0.85em; margin: 5px 0; line-height: 1.2;}
+.info-section {margin-top: 12px; padding: 0 5px;}
+.updated-time {font-size: 0.8em; color:#FFF176; margin: 2px 0;}
+.note {color:#ff4444; font-weight:bold; font-size: 0.75em; margin: 2px 0;}
+.footer-info {color:#FFD54F; font-weight:bold; font-size: 0.8em; margin: 4px 0; line-height: 1.2;}
 
-.footer-controls {margin-top: 15px; padding-bottom: 40px;}
+.footer-controls {margin-top: 15px; padding-bottom: 35px;}
 .controls-container {display: flex; align-items: center; justify-content: center; gap: 15px;}
-.arrow {font-size: 1.8em; color: #D4AF37; padding: 10px; cursor: pointer;}
-.refresh-btn {background: linear-gradient(90deg,#25D366,#128C7E); color:white; font-weight:bold; padding:12px 25px; border:none; border-radius:30px; min-width:160px; cursor:pointer; font-size:1.05em; box-shadow: 0 4px 15px rgba(0,0,0,0.5);}
+.arrow {font-size: 1.6em; color: #D4AF37; padding: 10px; cursor: pointer;}
+.refresh-btn {background: linear-gradient(90deg,#25D366,#128C7E); color:white; font-weight:bold; padding:11px 22px; border:none; border-radius:30px; min-width:150px; cursor:pointer; font-size:0.95em; box-shadow: 0 4px 15px rgba(0,0,0,0.5);}
 </style>
 </head>
 <body>
@@ -156,3 +155,4 @@ window.onload = loadPrices;
 </script>
 </body>
 </html>
+
