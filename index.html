@@ -7,45 +7,49 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
 body {margin:0; padding:5px; font-family:Segoe UI, Tahoma, Geneva, sans-serif; text-align:center; color:#FFEB3B; background:#111; display: flex; flex-direction: column; min-height: 100vh; overflow-x: hidden;}
-.content-wrapper {flex: 1;}
-.logo-container {margin:5px 0 2px;}
-.logo-img {width:80px; height:80px; border-radius:50%; object-fit:cover; border:2px solid #D4AF37; background:rgba(0,0,0,0.4);}
+.content-wrapper {flex: 1; display: flex; flex-direction: column; justify-content: flex-start;}
 
-/* Instagram */
-.insta-box {margin-bottom: 8px; font-size: 1.1em; color: #E1306C; font-weight: bold; display: flex; justify-content: center; align-items: center; gap: 8px;}
+/* Logo - Bigger Size */
+.logo-container {margin:10px 0 5px;}
+.logo-img {width:105px; height:105px; border-radius:50%; object-fit:cover; border:3px solid #D4AF37; background:rgba(0,0,0,0.4);}
 
-/* Headings */
-h2 {font-size: 1.4em; margin: 5px 0; min-height: 1.2em;}
-#ounceUSD {font-size: 1.2em; font-weight: bold; color: #FFF176; margin-bottom: 8px;}
+/* Instagram - Left Icon */
+.insta-box {margin-bottom: 8px; font-size: 1.15em; color: #E1306C; font-weight: bold; display: flex; justify-content: center; align-items: center; gap: 8px;}
+.insta-box i { order: -1; }
+
+/* Headings - Slightly Smaller */
+h2 {font-size: 1.3em; margin: 4px 0; min-height: 1.1em;}
+#ounceUSD {font-size: 1.15em; font-weight: bold; color: #FFF176; margin-bottom: 10px;}
 
 /* Carousel */
-.carousel {position:relative; max-width:350px; margin:0 auto; overflow:hidden; border-radius:10px;}
+.carousel {position:relative; max-width:360px; margin:0 auto; overflow:hidden; border-radius:10px; width: 100%;}
 .carousel-inner {display:flex; transition: transform 0.5s ease; width: 100%;}
 .carousel-slide {width: 100%; flex-shrink: 0; padding: 0 4px; box-sizing: border-box;}
 
-.rates-card {background:rgba(20,20,20,0.8); border:1px solid #D4AF37; border-radius:10px; padding:5px; position:relative; overflow:hidden; min-height: 280px;}
-.rates-card::before {content:""; position:absolute; inset:0; background:url('https://i.ibb.co/CF2bDdM/1772224958978.png') no-repeat center center; background-size:auto 60%; opacity:0.12; z-index:0;}
+.rates-card {background:rgba(20,20,20,0.8); border:1px solid #D4AF37; border-radius:10px; padding:5px; position:relative; overflow:hidden;}
+.rates-card::before {content:""; position:absolute; inset:0; background:url('https://i.ibb.co/CF2bDdM/1772224958978.png') no-repeat center center; background-size:auto 70%; opacity:0.12; z-index:0;}
 .rates-card>* {position:relative; z-index:1;}
 
-/* Table Styling - 3 Columns */
-.table-header {display:grid; grid-template-columns: 1fr 1fr 1fr; padding:8px; font-weight:bold; border-bottom:2px solid #D4AF37; font-size:0.85em; color:#FFEB3B; background:rgba(40,40,40,0.6); text-align: center;}
-.rate-row {display:grid; grid-template-columns: 1fr 1fr 1fr; padding:7px 8px; border-bottom:1px solid #333; font-size:0.85em; background:rgba(30,30,30,0.4); text-align: center; align-items: center;}
+/* Table Styling - Same Color for All Columns */
+.table-header {display:grid; grid-template-columns: 1fr 1fr 1fr; padding:10px 5px; font-weight:bold; border-bottom:2px solid #D4AF37; font-size:0.85em; color:#FFEB3B; background:rgba(40,40,40,0.6); text-align: center;}
+.rate-row {display:grid; grid-template-columns: 1fr 1fr 1fr; padding:8px 5px; border-bottom:1px solid #333; font-size:0.88em; background:rgba(30,30,30,0.4); text-align: center; align-items: center; color: #FFF176;}
 .rate-row:last-child {border-bottom:none;}
-.karat {color:#FFEB3B; font-weight:bold;}
-.unit {color: #4db6ac; font-weight: bold;}
-.price {color:#FFF176; font-weight:bold;}
+.karat, .unit, .price {font-weight:bold;}
 
-/* Info Section - Tightly packed */
-.info-section {margin-top: 5px; padding: 0 10px;}
-.updated-time {font-size:0.9em; color:#FFF176; margin: 2px 0; font-weight: bold; text-transform: capitalize;}
+/* Adjusting 2nd Table to fill space */
+#karatTable .rate-row { padding: 22px 5px; font-size: 1.1em; }
+
+/* Info Section - Tightly attached to table */
+.info-section {margin-top: 8px; padding: 0 10px;}
+.updated-time {font-size:0.85em; color:#FFF176; margin: 2px 0; font-weight: bold;}
 .note {color:#FFCA28; font-weight:bold; font-size:0.8em; margin: 2px 0;}
-.footer-info {color:#FFD54F; font-weight:bold; font-size:0.85em; margin: 4px 0; line-height: 1.2;}
+.footer-info {color:#FFD54F; font-weight:bold; font-size:0.85em; margin: 5px 0; line-height: 1.2;}
 
 /* Bottom Controls */
 .footer-controls {padding-bottom: 15px; margin-top: auto;}
-.controls-container {display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: 5px;}
-.arrow {font-size:1.6em; color:#FFD700; background:rgba(212, 175, 55, 0.2); border: 1px solid #D4AF37; border-radius:50%; width:45px; height:45px; display:flex; align-items:center; justify-content:center; cursor:pointer;}
-.refresh-btn {background:linear-gradient(90deg,#25D366,#128C7E); color:white; font-weight:bold; padding:12px; border:none; border-radius:40px; width:160px; cursor:pointer; font-size:0.95em;}
+.controls-container {display: flex; align-items: center; justify-content: center; gap: 20px;}
+.arrow {font-size:1.7em; color:#FFD700; background:rgba(212, 175, 55, 0.2); border: 1px solid #D4AF37; border-radius:50%; width:50px; height:50px; display:flex; align-items:center; justify-content:center; cursor:pointer;}
+.refresh-btn {background:linear-gradient(90deg,#25D366,#128C7E); color:white; font-weight:bold; padding:13px; border:none; border-radius:40px; width:170px; cursor:pointer; font-size:1em;}
 
 </style>
 </head>
@@ -80,7 +84,7 @@ h2 {font-size: 1.4em; margin: 5px 0; min-height: 1.2em;}
         </div>
 
         <div class="carousel-slide">
-          <div class="rates-card">
+          <div class="rates-card" id="karatTable">
             <div class="table-header"><span>عيار / Karat</span><span>الوحدة / Unit</span><span>السعر / OMR</span></div>
             <div class="rate-row"><span class="karat">24K</span><span class="unit">1 جرام</span><span class="price" id="g24_2">...</span></div>
             <div class="rate-row"><span class="karat">22K</span><span class="unit">1 جرام</span><span class="price" id="g22_2">...</span></div>
@@ -141,39 +145,27 @@ async function loadPrices() {
         const g1 = basePrice + 4.5;
         function fmt(x) { return x.toFixed(3); }
 
-        document.getElementById("g1").innerText = fmt(g1) + " OMR";
-        document.getElementById("g2_5").innerText = fmt(basePrice * 2.5 + 12) + " OMR";
-        document.getElementById("g5").innerText = fmt(basePrice * 5 + 15) + " OMR";
-        document.getElementById("g10").innerText = fmt(basePrice * 10 + 15) + " OMR";
-        document.getElementById("tola").innerText = fmt(basePrice * 11.664 + 15) + " OMR";
-        document.getElementById("g20").innerText = fmt(basePrice * 20 + 20) + " OMR";
-        document.getElementById("g50").innerText = fmt(basePrice * 50 + 25) + " OMR";
-        document.getElementById("g100").innerText = fmt(basePrice * 100 + 32) + " OMR";
-        document.getElementById("g116_64").innerText = fmt(basePrice * 116.64) + " OMR";
+        document.getElementById("g1").innerText = fmt(g1);
+        document.getElementById("g2_5").innerText = fmt(basePrice * 2.5 + 12);
+        document.getElementById("g5").innerText = fmt(basePrice * 5 + 15);
+        document.getElementById("g10").innerText = fmt(basePrice * 10 + 15);
+        document.getElementById("tola").innerText = fmt(basePrice * 11.664 + 15);
+        document.getElementById("g20").innerText = fmt(basePrice * 20 + 20);
+        document.getElementById("g50").innerText = fmt(basePrice * 50 + 25);
+        document.getElementById("g100").innerText = fmt(basePrice * 100 + 32);
+        document.getElementById("g116_64").innerText = fmt(basePrice * 116.64);
 
-        document.getElementById("g24_2").innerText = fmt(g1) + " OMR";
-        document.getElementById("g22_2").innerText = (g1 * 0.921).toFixed(3) + " OMR";
-        document.getElementById("g21_2").innerText = (g1 * 0.880).toFixed(3) + " OMR";
-        document.getElementById("g18_2").innerText = (g1 * 0.755).toFixed(3) + " OMR";
-        document.getElementById("tola21_2").innerText = (g1 * 0.880 * 11.664).toFixed(3) + " OMR";
+        document.getElementById("g24_2").innerText = fmt(g1);
+        document.getElementById("g22_2").innerText = (g1 * 0.921).toFixed(3);
+        document.getElementById("g21_2").innerText = (g1 * 0.880).toFixed(3);
+        document.getElementById("g18_2").innerText = (g1 * 0.755).toFixed(3);
+        document.getElementById("tola21_2").innerText = (g1 * 0.880 * 11.664).toFixed(3);
 
-        // Time Format: Mar 05 2026, 2:00 am
         const now = new Date();
-        const options = { 
-            timeZone: "Asia/Muscat", 
-            month: 'short', 
-            day: '2-digit', 
-            year: 'numeric', 
-            hour: 'numeric', 
-            minute: '2-digit', 
-            hour12: true 
-        };
-        let formattedDate = now.toLocaleString('en-US', options).replace(',', '');
-        // Customizing string to match exactly "Mar 05 2026, 2:00 am"
-        const parts = formattedDate.split(' ');
-        const finalTime = `${parts[0]} ${parts[1]} ${parts[2]}, ${parts[3]} ${parts[4]}`;
-        
-        document.getElementById("time").innerText = "التحديث: " + finalTime;
+        const options = { timeZone: "Asia/Muscat", month: 'short', day: '2-digit', year: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true };
+        let fD = now.toLocaleString('en-US', options).replace(',', '');
+        const pTs = fD.split(' ');
+        document.getElementById("time").innerText = "التحديث: " + pTs[0] + " " + pTs[1] + " " + pTs[2] + ", " + pTs[3] + " " + pTs[4];
         
     } catch (e) {
         document.getElementById("ounceUSD").innerText = "خطأ في الاتصال";
