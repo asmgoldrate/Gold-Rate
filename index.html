@@ -23,33 +23,30 @@ h2 {font-size: 1.4em; margin: 5px 0; min-height: 1.2em;}
 .carousel-inner {display:flex; transition: transform 0.5s ease; width: 100%;}
 .carousel-slide {width: 100%; flex-shrink: 0; padding: 0 4px; box-sizing: border-box;}
 
-.rates-card {background:rgba(20,20,20,0.8); border:1px solid #D4AF37; border-radius:10px; padding:5px; position:relative; overflow:hidden; min-height: 310px;}
+.rates-card {background:rgba(20,20,20,0.8); border:1px solid #D4AF37; border-radius:10px; padding:5px; position:relative; overflow:hidden; min-height: 280px;}
 .rates-card::before {content:""; position:absolute; inset:0; background:url('https://i.ibb.co/CF2bDdM/1772224958978.png') no-repeat center center; background-size:auto 60%; opacity:0.12; z-index:0;}
 .rates-card>* {position:relative; z-index:1;}
 
-/* Table Styling - Optimized Size */
-.table-header {display:flex; justify-content:space-between; padding:8px; font-weight:bold; border-bottom:2px solid #D4AF37; font-size:0.9em; color:#FFEB3B; background:rgba(40,40,40,0.6);}
-.rate-row {display:flex; justify-content:space-between; padding:7px 8px; border-bottom:1px solid #333; font-size:0.9em; background:rgba(30,30,30,0.4);}
+/* Table Styling - 3 Columns */
+.table-header {display:grid; grid-template-columns: 1fr 1fr 1fr; padding:8px; font-weight:bold; border-bottom:2px solid #D4AF37; font-size:0.85em; color:#FFEB3B; background:rgba(40,40,40,0.6); text-align: center;}
+.rate-row {display:grid; grid-template-columns: 1fr 1fr 1fr; padding:7px 8px; border-bottom:1px solid #333; font-size:0.85em; background:rgba(30,30,30,0.4); text-align: center; align-items: center;}
 .rate-row:last-child {border-bottom:none;}
 .karat {color:#FFEB3B; font-weight:bold;}
+.unit {color: #4db6ac; font-weight: bold;}
 .price {color:#FFF176; font-weight:bold;}
 
-/* Info Section - Directly under table */
-.info-section {margin-top: 10px; padding: 0 10px;}
-.updated-time {font-size:0.85em; color:#FFF176; margin: 2px 0; font-weight: bold;}
+/* Info Section - Tightly packed */
+.info-section {margin-top: 5px; padding: 0 10px;}
+.updated-time {font-size:0.9em; color:#FFF176; margin: 2px 0; font-weight: bold; text-transform: capitalize;}
 .note {color:#FFCA28; font-weight:bold; font-size:0.8em; margin: 2px 0;}
-.footer-info {color:#FFD54F; font-weight:bold; font-size:0.85em; margin: 4px 0; line-height: 1.3;}
+.footer-info {color:#FFD54F; font-weight:bold; font-size:0.85em; margin: 4px 0; line-height: 1.2;}
 
 /* Bottom Controls */
-.footer-controls {padding-bottom: 20px; margin-top: auto;}
-.controls-container {display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: 10px;}
+.footer-controls {padding-bottom: 15px; margin-top: auto;}
+.controls-container {display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: 5px;}
 .arrow {font-size:1.6em; color:#FFD700; background:rgba(212, 175, 55, 0.2); border: 1px solid #D4AF37; border-radius:50%; width:45px; height:45px; display:flex; align-items:center; justify-content:center; cursor:pointer;}
-.refresh-btn {background:linear-gradient(90deg,#25D366,#128C7E); color:white; font-weight:bold; padding:12px; border:none; border-radius:40px; width:160px; cursor:pointer; font-size:0.95em; letter-spacing: 0.5px;}
+.refresh-btn {background:linear-gradient(90deg,#25D366,#128C7E); color:white; font-weight:bold; padding:12px; border:none; border-radius:40px; width:160px; cursor:pointer; font-size:0.95em;}
 
-/* Slide 2 Adjustment */
-#karatTable { max-width: 85%; margin: 5px auto; min-height: auto; }
-#karatTable .table-header { padding: 10px; font-size: 1em; }
-#karatTable .rate-row { padding: 15px 10px; font-size: 1.05em; }
 </style>
 </head>
 <body>
@@ -69,27 +66,27 @@ h2 {font-size: 1.4em; margin: 5px 0; min-height: 1.2em;}
       <div class="carousel-inner" id="carouselInner">
         <div class="carousel-slide">
           <div class="rates-card">
-            <div class="table-header"><span>الوحدة / Unit</span><span>السعر (OMR)</span></div>
-            <div class="rate-row"><span class="karat">1 جرام</span><span class="price" id="g1">...</span></div>
-            <div class="rate-row"><span class="karat">2.5 جرام</span><span class="price" id="g2_5">...</span></div>
-            <div class="rate-row"><span class="karat">5 جرام</span><span class="price" id="g5">...</span></div>
-            <div class="rate-row"><span class="karat">10 جرام</span><span class="price" id="g10">...</span></div>
-            <div class="rate-row"><span class="karat">1 تولة</span><span class="price" id="tola">...</span></div>
-            <div class="rate-row"><span class="karat">20 جرام</span><span class="price" id="g20">...</span></div>
-            <div class="rate-row"><span class="karat">50 جرام</span><span class="price" id="g50">...</span></div>
-            <div class="rate-row"><span class="karat">100 جرام</span><span class="price" id="g100">...</span></div>
-            <div class="rate-row"><span class="karat">116.64 جرام</span><span class="price" id="g116_64">...</span></div>
+            <div class="table-header"><span>عيار / Karat</span><span>الوحدة / Unit</span><span>السعر / OMR</span></div>
+            <div class="rate-row"><span class="karat">24K</span><span class="unit">1 جرام</span><span class="price" id="g1">...</span></div>
+            <div class="rate-row"><span class="karat">24K</span><span class="unit">2.5 جرام</span><span class="price" id="g2_5">...</span></div>
+            <div class="rate-row"><span class="karat">24K</span><span class="unit">5 جرام</span><span class="price" id="g5">...</span></div>
+            <div class="rate-row"><span class="karat">24K</span><span class="unit">10 جرام</span><span class="price" id="g10">...</span></div>
+            <div class="rate-row"><span class="karat">24K</span><span class="unit">1 تولة</span><span class="price" id="tola">...</span></div>
+            <div class="rate-row"><span class="karat">24K</span><span class="unit">20 جرام</span><span class="price" id="g20">...</span></div>
+            <div class="rate-row"><span class="karat">24K</span><span class="unit">50 جرام</span><span class="price" id="g50">...</span></div>
+            <div class="rate-row"><span class="karat">24K</span><span class="unit">100 جرام</span><span class="price" id="g100">...</span></div>
+            <div class="rate-row"><span class="karat">24K</span><span class="unit">116.64 جرام</span><span class="price" id="g116_64">...</span></div>
           </div>
         </div>
 
         <div class="carousel-slide">
-          <div id="karatTable" class="rates-card">
-            <div class="table-header"><span>عيار / Karat</span><span>السعر / OMR</span></div>
-            <div class="rate-row"><span class="karat">24K (1 جرام)</span><span class="price" id="g24_2">...</span></div>
-            <div class="rate-row"><span class="karat">22K (1 جرام)</span><span class="price" id="g22_2">...</span></div>
-            <div class="rate-row"><span class="karat">21K (1 جرام)</span><span class="price" id="g21_2">...</span></div>
-            <div class="rate-row"><span class="karat">18K (1 جرام)</span><span class="price" id="g18_2">...</span></div>
-            <div class="rate-row"><span class="karat">21K (تولة)</span><span class="price" id="tola21_2">...</span></div>
+          <div class="rates-card">
+            <div class="table-header"><span>عيار / Karat</span><span>الوحدة / Unit</span><span>السعر / OMR</span></div>
+            <div class="rate-row"><span class="karat">24K</span><span class="unit">1 جرام</span><span class="price" id="g24_2">...</span></div>
+            <div class="rate-row"><span class="karat">22K</span><span class="unit">1 جرام</span><span class="price" id="g22_2">...</span></div>
+            <div class="rate-row"><span class="karat">21K</span><span class="unit">1 جرام</span><span class="price" id="g21_2">...</span></div>
+            <div class="rate-row"><span class="karat">18K</span><span class="unit">1 جرام</span><span class="price" id="g18_2">...</span></div>
+            <div class="rate-row"><span class="karat">21K</span><span class="unit">1 تولة</span><span class="price" id="tola21_2">...</span></div>
           </div>
         </div>
       </div>
@@ -160,23 +157,23 @@ async function loadPrices() {
         document.getElementById("g18_2").innerText = (g1 * 0.755).toFixed(3) + " OMR";
         document.getElementById("tola21_2").innerText = (g1 * 0.880 * 11.664).toFixed(3) + " OMR";
 
-        // Fixed Time & Date Format
+        // Time Format: Mar 05 2026, 2:00 am
         const now = new Date();
         const options = { 
             timeZone: "Asia/Muscat", 
-            year: 'numeric', 
-            month: '2-digit', 
+            month: 'short', 
             day: '2-digit', 
-            hour: '2-digit', 
+            year: 'numeric', 
+            hour: 'numeric', 
             minute: '2-digit', 
             hour12: true 
         };
-        const formatter = new Intl.DateTimeFormat('en-GB', options);
-        const parts = formatter.formatToParts(now);
-        const dateStr = `${parts.find(p => p.type === 'day').value}/${parts.find(p => p.type === 'month').value}/${parts.find(p => p.type === 'year').value}`;
-        const timeStr = `${parts.find(p => p.type === 'hour').value}:${parts.find(p => p.type === 'minute').value} ${parts.find(p => p.type === 'dayPeriod').value}`;
+        let formattedDate = now.toLocaleString('en-US', options).replace(',', '');
+        // Customizing string to match exactly "Mar 05 2026, 2:00 am"
+        const parts = formattedDate.split(' ');
+        const finalTime = `${parts[0]} ${parts[1]} ${parts[2]}, ${parts[3]} ${parts[4]}`;
         
-        document.getElementById("time").innerText = "التحديث: " + dateStr + " | " + timeStr;
+        document.getElementById("time").innerText = "التحديث: " + finalTime;
         
     } catch (e) {
         document.getElementById("ounceUSD").innerText = "خطأ في الاتصال";
