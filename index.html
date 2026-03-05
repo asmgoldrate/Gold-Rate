@@ -2,83 +2,81 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>أسعار الذهب - شركه الصائغ المعروف</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-body {margin:0; padding:2px; font-family:'Segoe UI', sans-serif; text-align:center; color:#FFEB3B; background:#000; display: flex; flex-direction: column; height: 100vh; overflow: hidden;}
-.content-wrapper {flex: 1; display: flex; flex-direction: column; justify-content: flex-start;}
+/* Page Lock Hatane ke liye changes */
+body {margin:0; padding:5px; font-family:'Segoe UI', sans-serif; text-align:center; color:#FFEB3B; background:#000; min-height: 100vh;}
 
-/* Logo Section - Slightly Smaller */
-.logo-container {margin:5px 0 2px;}
-.logo-img {width:95px; height:95px; border-radius:50%; border:2px solid #D4AF37; box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);}
+/* Logo Section */
+.logo-container {margin:10px 0 5px;}
+.logo-img {width:95px; height:95px; border-radius:50%; border:2px solid #D4AF37;}
 
 /* Instagram ID */
-.insta-box {margin: 2px auto 5px; font-size: 1.05em; color: #f09433; font-weight: bold; display: flex; justify-content: center; align-items: center; gap: 6px; direction: ltr;}
+.insta-box {margin: 2px auto 8px; font-size: 1.1em; color: #f09433; font-weight: bold; display: flex; justify-content: center; align-items: center; gap: 6px; direction: ltr;}
 .insta-box i { color: #dc2743; }
 
 /* Headings */
-h2 {font-size: 1.1em; margin: 2px 0; color: #D4AF37;}
-#ounceUSD {font-size: 1em; font-weight: bold; color: #FFF176; margin-bottom: 5px;}
+h2 {font-size: 1.1em; margin: 5px 0; color: #D4AF37;}
+#ounceUSD {font-size: 1.05em; font-weight: bold; color: #FFF176; margin-bottom: 10px;}
 
 /* Swipeable Carousel */
-.carousel {position:relative; width: 100%; max-width:360px; margin:0 auto; overflow:hidden; touch-action: pan-y;}
+.carousel {position:relative; width: 100%; max-width:360px; margin:0 auto; overflow:hidden;}
 .carousel-inner {display:flex; transition: transform 0.4s ease-out; width: 100%;}
 .carousel-slide {width: 100%; flex-shrink: 0; padding: 0 5px; box-sizing: border-box;}
 
-/* Tables */
-.rates-card {background:rgba(20,20,20,0.95); border:1px solid #D4AF37; border-radius:8px; padding:2px; min-height: 240px;}
-.table-header {display:grid; grid-template-columns: 1fr 1fr 1fr; padding:6px 2px; font-weight:bold; border-bottom:1px solid #D4AF37; font-size:0.75em; color:#FFEB3B; background:rgba(40,40,40,0.8);}
-.rate-row {display:grid; grid-template-columns: 1fr 1fr 1fr; padding:5px 2px; border-bottom:1px solid #222; font-size:0.82em; text-align: center; align-items: center; color: #FFF176;}
+/* Table Card */
+.rates-card {background:rgba(20,20,20,0.95); border:1px solid #D4AF37; border-radius:10px; padding:2px; min-height: 240px;}
+.table-header {display:grid; grid-template-columns: 1fr 1fr 1fr; padding:8px 2px; font-weight:bold; border-bottom:1px solid #D4AF37; font-size:0.75em; color:#FFEB3B; background:rgba(40,40,40,0.8);}
+.rate-row {display:grid; grid-template-columns: 1fr 1fr 1fr; padding:6px 2px; border-bottom:1px solid #222; font-size:0.85em; text-align: center; align-items: center; color: #FFF176;}
 .rate-row:last-child {border-bottom:none;}
 
-/* Karat Table Spacing */
-#karatRows .rate-row { padding: 10px 2px; font-size: 0.9em; }
+/* Gap Fix for 2nd Table */
+#karatRows .rate-row { padding: 12px 2px; }
 
-/* Info Section - Reduced Gap */
-.info-section {margin-top: 5px; padding: 0 5px;}
-.updated-time {font-size: 0.75em; color:#FFF176; margin: 1px 0;}
-.note {color:#ff4444; font-weight:bold; font-size: 0.7em; margin: 1px 0;}
-.footer-info {color:#FFD54F; font-weight:bold; font-size: 0.75em; margin: 2px 0; line-height: 1.1;}
+/* Info Section - No extra gaps */
+.info-section {margin-top: 10px; padding: 0 5px;}
+.updated-time {font-size: 0.8em; color:#FFF176; margin: 2px 0;}
+.note {color:#ff4444; font-weight:bold; font-size: 0.75em; margin: 2px 0;}
+.footer-info {color:#FFD54F; font-weight:bold; font-size: 0.8em; margin: 5px 0; line-height: 1.2;}
 
-/* Footer Controls */
-.footer-controls {margin-top: auto; padding-bottom: 15px;}
+/* Refresh Button - Fixed Position */
+.footer-controls {margin-top: 20px; padding-bottom: 30px;}
 .controls-container {display: flex; align-items: center; justify-content: center; gap: 15px;}
-.arrow {font-size: 1.5em; color: #D4AF37; padding: 8px; cursor: pointer;}
-.refresh-btn {background: linear-gradient(90deg,#25D366,#128C7E); color:white; font-weight:bold; padding:10px 15px; border:none; border-radius:30px; min-width:140px; cursor:pointer; font-size:0.9em; box-shadow: 0 4px 10px rgba(0,0,0,0.5);}
+.arrow {font-size: 1.6em; color: #D4AF37; padding: 10px; cursor: pointer;}
+.refresh-btn {background: linear-gradient(90deg,#25D366,#128C7E); color:white; font-weight:bold; padding:12px 25px; border:none; border-radius:30px; min-width:160px; cursor:pointer; font-size:1em; box-shadow: 0 4px 15px rgba(0,0,0,0.5);}
 </style>
 </head>
 <body>
 
-<div class="content-wrapper">
-    <div class="logo-container"><img src="https://i.ibb.co/CF2bDdM/1772224958978.png" class="logo-img"></div>
-    <div class="insta-box"><i class="fab fa-instagram"></i><span>@alsaighalmarouf</span></div>
+<div class="logo-container"><img src="https://i.ibb.co/CF2bDdM/1772224958978.png" class="logo-img"></div>
+<div class="insta-box"><i class="fab fa-instagram"></i><span>@alsaighalmarouf</span></div>
 
-    <h2 id="mainHeading">أسعار سبائك الذهب</h2>
-    <div id="ounceUSD">سعر الأونصة: ...</div>
+<h2 id="mainHeading">أسعار سبائك الذهب</h2>
+<div id="ounceUSD">سعر الأونصة: ...</div>
 
-    <div class="carousel" id="swipeArea">
-      <div class="carousel-inner" id="carouselInner">
-        <div class="carousel-slide">
-          <div class="rates-card">
-            <div class="table-header"><span>عيار / Karat</span><span>الوحدة / Unit</span><span>السعر / OMR</span></div>
-            <div id="bullionRows"></div>
-          </div>
-        </div>
-        <div class="carousel-slide">
-          <div class="rates-card">
-            <div class="table-header"><span>عيار / Karat</span><span>الوحدة / Unit</span><span>السعر / OMR</span></div>
-            <div id="karatRows"></div>
-          </div>
-        </div>
+<div class="carousel" id="swipeArea">
+  <div class="carousel-inner" id="carouselInner">
+    <div class="carousel-slide">
+      <div class="rates-card">
+        <div class="table-header"><span>عيار / Karat</span><span>الوحدة / Unit</span><span>السعر / OMR</span></div>
+        <div id="bullionRows"></div>
       </div>
     </div>
-
-    <div class="info-section">
-        <p class="updated-time" id="time">--</p>
-        <p class="note">ملاحظه : اسعار الذهب متغيره</p>
-        <p class="footer-info">92480599 | أخوكم تمجيد الصائغ</p>
+    <div class="carousel-slide">
+      <div class="rates-card">
+        <div class="table-header"><span>عيار / Karat</span><span>الوحدة / Unit</span><span>السعر / OMR</span></div>
+        <div id="karatRows"></div>
+      </div>
     </div>
+  </div>
+</div>
+
+<div class="info-section">
+    <p class="updated-time" id="time">--</p>
+    <p class="note">ملاحظه : اسعار الذهب متغيره</p>
+    <p class="footer-info">92480599 | أخوكم تمجيد الصائغ</p>
 </div>
 
 <div class="footer-controls">
@@ -94,13 +92,14 @@ let currentSlide = 0;
 const inner = document.getElementById("carouselInner");
 const mainHeading = document.getElementById("mainHeading");
 
+// Touch Logic for Swipe
 let startX = 0;
 const swipeArea = document.getElementById("swipeArea");
-swipeArea.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive: true});
+swipeArea.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
 swipeArea.addEventListener('touchend', e => {
     let diff = startX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 40) moveSlide(diff > 0 ? 1 : -1);
-}, {passive: true});
+    if (Math.abs(diff) > 50) moveSlide(diff > 0 ? 1 : -1);
+});
 
 function moveSlide(dir) {
     currentSlide = (currentSlide + dir + 2) % 2;
@@ -116,12 +115,32 @@ async function loadPrices() {
         const data = await res.json();
         const p = data.price;
         document.getElementById("ounceUSD").innerText = "سعر الأونصة (USD): " + Math.floor(p);
+
         const p24k = (p * 1.4485 + 15) / 116.64;
         const fmt = x => x.toFixed(3);
-        const kRows = [["24K", "1 جرام", fmt(p24k)], ["22K", "1 جرام", fmt(p24k * 0.920)], ["21K", "1 جرام", fmt(p24k * 0.879)], ["18K", "1 جرام", fmt(p24k * 0.755)], ["21K", "1 تولة", fmt(p24k * 0.879 * 11.664)]];
+
+        const kRows = [
+            ["24K", "1 جرام", fmt(p24k)],
+            ["22K", "1 جرام", fmt(p24k * 0.920)],
+            ["21K", "1 جرام", fmt(p24k * 0.879)],
+            ["18K", "1 جرام", fmt(p24k * 0.755)],
+            ["21K", "1 تولة", fmt(p24k * 0.879 * 11.664)]
+        ];
         document.getElementById("karatRows").innerHTML = kRows.map(r => `<div class="rate-row"><span>${r[0]}</span><span>${r[1]}</span><span>${r[2]}</span></div>`).join('');
-        const bRows = [["24K", "1 جرام", fmt(p24k + 4.5)], ["24K", "2.5 جرام", fmt(p24k * 2.5 + 12)], ["24K", "5 جرام", fmt(p24k * 5 + 15)], ["24K", "10 جرام", fmt(p24k * 10 + 15)], ["24K", "1 تولة", fmt(p24k * 11.664 + 15)], ["24K", "20 جرام", fmt(p24k * 20 + 20)], ["24K", "50 جرام", fmt(p24k * 50 + 25)], ["24K", "100 جرام", fmt(p24k * 100 + 32)], ["24K", "116.64 جرام", fmt(p24k * 116.64)]];
+
+        const bRows = [
+            ["24K", "1 جرام", fmt(p24k + 4.5)],
+            ["24K", "2.5 جرام", fmt(p24k * 2.5 + 12)],
+            ["24K", "5 جرام", fmt(p24k * 5 + 15)],
+            ["24K", "10 جرام", fmt(p24k * 10 + 15)],
+            ["24K", "1 تولة", fmt(p24k * 11.664 + 15)],
+            ["24K", "20 جرام", fmt(p24k * 20 + 20)],
+            ["24K", "50 جرام", fmt(p24k * 50 + 25)],
+            ["24K", "100 جرام", fmt(p24k * 100 + 32)],
+            ["24K", "116.64 جرام", fmt(p24k * 116.64)]
+        ];
         document.getElementById("bullionRows").innerHTML = bRows.map(r => `<div class="rate-row"><span>${r[0]}</span><span>${r[1]}</span><span>${r[2]}</span></div>`).join('');
+
         const now = new Date();
         document.getElementById("time").innerText = "التحديث: " + now.toLocaleString('en-US', { month: 'short', day: '2-digit', year: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true });
     } catch (e) { console.error(e); }
