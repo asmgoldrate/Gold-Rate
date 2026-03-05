@@ -6,11 +6,10 @@
 <title>أسعار الذهب - شركه الصائغ المعروف</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
-/* Page Lock Hatane aur Scrolling ke liye */
 body {margin:0; padding:5px; font-family:'Segoe UI', sans-serif; text-align:center; color:#FFEB3B; background:#000; min-height: 100vh;}
 
 /* Logo Section */
-.logo-container {margin:10px 0 5px;}
+.logo-container {margin:8px 0 2px;}
 .logo-img {width:95px; height:95px; border-radius:50%; border:2px solid #D4AF37;}
 
 /* Instagram ID */
@@ -18,34 +17,39 @@ body {margin:0; padding:5px; font-family:'Segoe UI', sans-serif; text-align:cent
 .insta-box i { color: #dc2743; }
 
 /* Headings */
-h2 {font-size: 1.1em; margin: 5px 0; color: #D4AF37;}
-#ounceUSD {font-size: 1.05em; font-weight: bold; color: #FFF176; margin-bottom: 10px;}
+h2 {font-size: 1.15em; margin: 4px 0; color: #D4AF37;}
+#ounceUSD {font-size: 1.05em; font-weight: bold; color: #FFF176; margin-bottom: 8px;}
 
 /* Swipeable Carousel */
 .carousel {position:relative; width: 100%; max-width:360px; margin:0 auto; overflow:hidden;}
 .carousel-inner {display:flex; transition: transform 0.4s ease-out; width: 100%;}
 .carousel-slide {width: 100%; flex-shrink: 0; padding: 0 5px; box-sizing: border-box;}
 
-/* Table Card Design */
-.rates-card {background:rgba(20,20,20,0.95); border:1px solid #D4AF37; border-radius:10px; padding:2px; min-height: 250px;}
-.table-header {display:grid; grid-template-columns: 1fr 1fr 1fr; padding:8px 2px; font-weight:bold; border-bottom:1px solid #D4AF37; font-size:0.75em; color:#FFEB3B; background:rgba(40,40,40,0.8);}
-.rate-row {display:grid; grid-template-columns: 1fr 1fr 1fr; padding:6px 2px; border-bottom:1px solid #222; font-size:0.85em; text-align: center; align-items: center; color: #FFF176;}
+/* Table Card - Height Balanced */
+.rates-card {background:rgba(20,20,20,0.95); border:1px solid #D4AF37; border-radius:10px; padding:2px; min-height: 260px; display: flex; flex-direction: column;}
+
+/* Header Font Increased */
+.table-header {display:grid; grid-template-columns: 1fr 1fr 1fr; padding:10px 2px; font-weight:900; border-bottom:1px solid #D4AF37; font-size:0.85em; color:#FFEB3B; background:rgba(40,40,40,0.8);}
+
+.rows-container {flex-grow: 1; display: flex; flex-direction: column; justify-content: space-around;}
+
+.rate-row {display:grid; grid-template-columns: 1fr 1fr 1fr; padding:6px 2px; border-bottom:1px solid #222; font-size:0.88em; text-align: center; align-items: center; color: #FFF176;}
 .rate-row:last-child {border-bottom:none;}
 
-/* Gap Fix for 2nd Table (Isse gap kam aur balance ho jayega) */
-#karatRows .rate-row { padding: 14px 2px; font-size: 0.92em; }
+/* 2nd Table Specific: Bigger Rows to fill gap */
+#karatRows .rate-row { padding: 15px 2px; font-size: 0.95em; }
 
 /* Info Section */
-.info-section {margin-top: 15px; padding: 0 5px;}
+.info-section {margin-top: 12px; padding: 0 5px;}
 .updated-time {font-size: 0.8em; color:#FFF176; margin: 2px 0;}
 .note {color:#ff4444; font-weight:bold; font-size: 0.75em; margin: 2px 0;}
-.footer-info {color:#FFD54F; font-weight:bold; font-size: 0.8em; margin: 5px 0; line-height: 1.2;}
+.footer-info {color:#FFD54F; font-weight:bold; font-size: 0.82em; margin: 4px 0; line-height: 1.2;}
 
-/* Refresh Button and Footer Controls */
-.footer-controls {margin-top: 20px; padding-bottom: 35px;}
+/* Refresh Button Fix */
+.footer-controls {margin-top: 15px; padding-bottom: 30px;}
 .controls-container {display: flex; align-items: center; justify-content: center; gap: 15px;}
 .arrow {font-size: 1.6em; color: #D4AF37; padding: 10px; cursor: pointer;}
-.refresh-btn {background: linear-gradient(90deg,#25D366,#128C7E); color:white; font-weight:bold; padding:12px 25px; border:none; border-radius:30px; min-width:160px; cursor:pointer; font-size:1em; box-shadow: 0 4px 15px rgba(0,0,0,0.5);}
+.refresh-btn {background: linear-gradient(90deg,#25D366,#128C7E); color:white; font-weight:bold; padding:12px 25px; border:none; border-radius:30px; min-width:160px; cursor:pointer; font-size:1em; box-shadow: 0 4px 12px rgba(0,0,0,0.6);}
 </style>
 </head>
 <body>
@@ -61,13 +65,13 @@ h2 {font-size: 1.1em; margin: 5px 0; color: #D4AF37;}
     <div class="carousel-slide">
       <div class="rates-card">
         <div class="table-header"><span>عيار / Karat</span><span>الوحدة / Unit</span><span>السعر / OMR</span></div>
-        <div id="bullionRows"></div>
+        <div class="rows-container" id="bullionRows"></div>
       </div>
     </div>
     <div class="carousel-slide">
       <div class="rates-card">
         <div class="table-header"><span>عيار / Karat</span><span>الوحدة / Unit</span><span>السعر / OMR</span></div>
-        <div id="karatRows"></div>
+        <div class="rows-container" id="karatRows"></div>
       </div>
     </div>
   </div>
@@ -92,7 +96,6 @@ let currentSlide = 0;
 const inner = document.getElementById("carouselInner");
 const mainHeading = document.getElementById("mainHeading");
 
-// Swipe Logic
 let startX = 0;
 const swipeArea = document.getElementById("swipeArea");
 swipeArea.addEventListener('touchstart', e => { startX = e.touches[0].clientX; });
@@ -119,7 +122,6 @@ async function loadPrices() {
         const p24k = (p * 1.4485 + 15) / 116.64;
         const fmt = x => x.toFixed(3);
 
-        // Slide 2 Content (Adjusted as per your image)
         const kRows = [
             ["24K", "1 جرام", fmt(p24k)],
             ["22K", "1 جرام", fmt(p24k * 0.920)],
@@ -129,7 +131,6 @@ async function loadPrices() {
         ];
         document.getElementById("karatRows").innerHTML = kRows.map(r => `<div class="rate-row"><span>${r[0]}</span><span>${r[1]}</span><span>${r[2]}</span></div>`).join('');
 
-        // Slide 1 Content
         const bRows = [
             ["24K", "1 جرام", fmt(p24k + 4.5)],
             ["24K", "2.5 جرام", fmt(p24k * 2.5 + 12)],
